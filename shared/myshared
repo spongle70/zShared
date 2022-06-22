@@ -1,0 +1,36 @@
+# Common environment variables
+#
+set_constants () {
+  MYNAME=$(uname -n)
+  DATENOW=$(date '+%Y%m%d-%H%M%S')
+
+  THIS_SCRIPT=`basename $0`
+  THIS_PATH=`dirname $0`
+  LOCK=/var/tmp/${THIS_SCRIPT}.lock
+  LOG=/var/tmp/${THIS_SCRIPT}.log
+  ERROR=/var/tmp/${THIS_SCRIPT}.error.$$
+
+  APP=${THIS_SCRIPT}
+  VERSION=
+}
+
+
+################### shared functions below
+
+get_myip () {
+# dig not installed on alpine
+  #MYEXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+  #MYEXTERNALIP=$(curl checkip.dyndns.org| awk -F'<' '{print $7 }'| awk -F' ' '{ print $4 }')
+  MYEXTERNALIP=$(curl ipinfo.io/ip)
+  MYFULLIP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+  MYNETWORK=$(echo ${MYFULLIP}| cut -f1-3 -d.)
+  MYIP=$(echo ${MYFULLIP}| cut -f4 -d.)
+  echo "MYEXTERNALIP ${MYEXTERNALIP}"
+  echo "MYFULLIP ${MYFULLIP}"
+  echo "MYIP ${MYIP}"
+  echo "MYNETWORK ${MYNETWORK}"
+  echo ""
+  
+  export MYFULLIP MYNETWORK MYIP MYEXTERNALIP
+}
+######

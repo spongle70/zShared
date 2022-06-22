@@ -1,0 +1,88 @@
+#!/bin/sh
+set -e
+
+# Common environment variables
+#
+
+
+check_keystore () {
+if [ ! -d ${KEYSTORE} ]
+then
+ mkdir -p ${KEYSTORE}
+fi
+}
+
+check_bastionkey () {
+if [ ! -f ${BASTIONKEY} ]
+then
+ ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C donkey@${NAME}
+fi
+}
+
+check_gitkey () {
+if [ ! -f ${GITKEY} ]
+then
+ ssh-keygen -o -a 100 -t ed25519 -f ${GITKEY} -N "" -C git@${NAME}
+fi
+}
+
+check_rsynckey () {
+if [ ! -f ${RSYNCKEY} ]
+then
+ ssh-keygen -o -a 100 -t ed25519 -f ${RSYNCKEY} -N "" -C rsync@${NAME}
+fi
+}
+
+check_vibblerkey () {
+if [ ! -f ${VIBBLERKEY} ]
+then
+ ssh-keygen -o -a 100 -t ed25519 -f ${VIBBLERKEY} -N "" -C vibbler@${NAME}
+fi
+}
+
+
+#####
+# Main script below
+#####
+KEYSTORE=~/.mykeys
+BASTIONKEY=${KEYSTORE}/donkeykey
+GITKEY=${KEYSTORE}/gitkey
+RSYNCKEY=${KEYSTORE}/rsynckey
+VIBBLERKEY=${KEYSTORE}/vibblerkey
+
+
+if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zPrivateConfig/shared
+fi
+
+if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
+then
+	BASE=/static
+fi
+
+if [ -f ${BASE}/shared/myshared ]
+then
+  . ${BASE}/shared/myshared
+else
+  echo "Environment file not found"
+  exit 1
+fi
+
+
+SHARED=${BASE}/shared
+
+. ${SHARED}/myshared
+
+NAME=$(uname -n|cut -c2-4)
+LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
+
+check_keystore
+check_bastionkey
+cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}${LAST}.pub
+
+check_gitkey
+check_rsynckey
+cp -p ${RSYNCKEY}.pub ${KEYSTORE}/_r${NAME}${LAST}.pub
+check_vibblerkey
+cp -p ${VIBBLERKEY}.pub ${KEYSTORE}/_v${NAME}${LAST}.pub
