@@ -15,7 +15,7 @@ fi
 check_bastionkey () {
 if [ ! -f ${BASTIONKEY} ]
 then
- ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C donkey@${NAME}
+ ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C bastion@${NAME}
 fi
 }
 
@@ -45,7 +45,7 @@ fi
 # Main script below
 #####
 KEYSTORE=~/.mykeys
-BASTIONKEY=${KEYSTORE}/donkeykey
+BASTIONKEY=${KEYSTORE}/bastionkey
 GITKEY=${KEYSTORE}/gitkey
 RSYNCKEY=${KEYSTORE}/rsynckey
 VIBBLERKEY=${KEYSTORE}/vibblerkey
@@ -79,6 +79,7 @@ LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
 
 check_keystore
 check_bastionkey
+cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_b${NAME}${LAST}.pub
 cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}${LAST}.pub
 
 check_gitkey

@@ -14,7 +14,10 @@ if [ -f ${BASE}/shared/.telegramenv ]
 then
   . ${BASE}/shared/.telegramenv
 else
-  echo "Environment file not found"
+  echo "Created ${BASE}/shared/.telegramenv"
+  echo "Please update contents and rerun"
+  echo "DUFUS="" " > ${BASE}/shared/.telegramenv
+  echo "TCHATID="" " >> ${BASE}/shared/.telegramenv
   exit 1
 fi
 
