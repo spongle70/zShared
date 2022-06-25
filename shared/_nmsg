@@ -1,14 +1,14 @@
 #!/bin/sh
 
-if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
-then
-	BASE=/zTools/zPrivateConfig
-fi
+# if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
+# then
+# 	BASE=/zTools/zPrivateConfig/shared
+# fi
 
-if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
-then
-	BASE=/static
-fi
+# if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
+# then
+# 	BASE=/static
+# fi
 
 # if [ -f ${BASE}/shared/.telegramenv ]
 # then
@@ -21,11 +21,11 @@ fi
 #   exit 1
 # fi
 
-# SCRIPT=$1
-# MSG=$2
-# MYNAME=`uname -n`
+SCRIPT=$1
+MSG=$2
+MYNAME=`uname -n`
 
-# SUBJECT=" ${MYNAME} - ${SCRIPT}: "
+SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
 # DROP='{"chat_id": "'"${TCHATID}"'", "text": " '"${SUBJECT}"' '"${MSG}"'"}'
 # curl -X POST \
@@ -35,4 +35,4 @@ fi
 
 # rm -f ${MSG}
 
-${BASE}/shared/_nmsg $1 $2
+curl -d "${SUBJECT} ${MSG}" ntfy.sh/hInfo
