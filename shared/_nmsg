@@ -10,16 +10,16 @@
 # 	BASE=/static
 # fi
 
-# if [ -f ${BASE}/shared/.telegramenv ]
-# then
-#   . ${BASE}/shared/.telegramenv
-# else
-#   echo "Created ${BASE}/shared/.telegramenv"
-#   echo "Please update contents and rerun"
-#   echo "DUFUS="" " > ${BASE}/shared/.telegramenv
-#   echo "TCHATID="" " >> ${BASE}/shared/.telegramenv
-#   exit 1
-# fi
+if [ -f ${BASE}/shared/.ntfyenv ]
+then
+  . ${BASE}/shared/.ntfyenv
+else
+  echo "Created ${BASE}/shared/.ntfyenv"
+  echo "Please update contents and rerun"
+  echo "DUFUS="" " > ${BASE}/shared/.ntfyenv
+  echo "TCHATID="" " >> ${BASE}/shared/.ntfyenv
+  exit 1
+fi
 
 SCRIPT=$1
 MSG=$2
@@ -35,4 +35,4 @@ SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
 # rm -f ${MSG}
 
-curl -d "${SUBJECT} ${MSG}" ntfy.sh/nInfo
+curl -d "${SUBJECT} ${MSG}" ntfy.sh/${DUFUS}
