@@ -1,13 +1,18 @@
 #!/bin/sh
 
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+then
+	BASE=/static
+fi
+
 if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
 then
 	BASE=/zTools/zPrivateConfig
 fi
 
-if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+if [ -d /zTools/zShared ]
 then
-	BASE=/static
+	BASE=/zTools/zShared
 fi
 
 # if [ -f ${BASE}/shared/.telegramenv ]
