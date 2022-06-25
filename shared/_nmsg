@@ -16,14 +16,14 @@ then
 	BASE=/zTools/zShared
 fi
 
-if [ -f ${BASE}/shared/.ntfyenv ]
+if [ -f ${BASE}/secrets/.ntfyenv ]
 then
-  . ${BASE}/shared/.ntfyenv
+  . ${BASE}/secrets/.ntfyenv
 else
-  echo "Created ${BASE}/shared/.ntfyenv"
+  echo "Created ${BASE}/secrets/.ntfyenv"
   echo "Please update contents and rerun"
-  echo "DUFUS="" " > ${BASE}/shared/.ntfyenv
-  echo "TCHATID="" " >> ${BASE}/shared/.ntfyenv
+  echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
+  echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
   exit 1
 fi
 

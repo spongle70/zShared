@@ -10,14 +10,14 @@ then
 	BASE=/static
 fi
 
-if [ -f ${BASE}/shared/.telegramenv ]
+if [ -f ${BASE}/secrets/.telegramenv ]
 then
-  . ${BASE}/shared/.telegramenv
+  . ${BASE}/secrets/.telegramenv
 else
-  echo "Created ${BASE}/shared/.telegramenv"
+  echo "Created ${BASE}/secrets/.telegramenv"
   echo "Please update contents and rerun"
-  echo "DUFUS="" " > ${BASE}/shared/.telegramenv
-  echo "TCHATID="" " >> ${BASE}/shared/.telegramenv
+  echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
+  echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
   exit 1
 fi
 
