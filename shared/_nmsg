@@ -1,14 +1,19 @@
 #!/bin/sh
 
-# if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
-# then
-# 	BASE=/zTools/zPrivateConfig/shared
-# fi
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+then
+	BASE=/static
+fi
 
-# if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
-# then
-# 	BASE=/static
-# fi
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zPrivateConfig
+fi
+
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
 
 if [ -f ${BASE}/shared/.ntfyenv ]
 then
