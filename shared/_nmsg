@@ -1,4 +1,5 @@
 #!/bin/sh
+echo $0
 
 if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
 then
