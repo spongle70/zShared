@@ -35,4 +35,4 @@ SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
 # rm -f ${MSG}
 
-curl -d "${SUBJECT} ${MSG}" ntfy.sh/hInfo
+curl -d "${SUBJECT} ${MSG}" ntfy.sh/nInfo
