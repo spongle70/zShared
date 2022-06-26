@@ -1,0 +1,63 @@
+#!/bin/sh
+echo $0
+
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+then
+	BASE=/static
+fi
+
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zPrivateConfig
+fi
+
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
+
+if [ -f ${BASE}/secrets/.ntfyenv ]
+then
+  . ${BASE}/secrets/.ntfyenv
+else
+  echo "Created ${BASE}/secrets/.ntfyenv"
+  echo "Please update contents and rerun"
+  echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
+  echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
+  exit 1
+fi
+
+SCRIPT=$1
+MSG=$2
+FILETOSEND=$3
+MYNAME=`uname -n`
+
+MSG=/var/tmp/${THIS_SCRIPT}.msg.$$
+#if [ -e ${ERROR} ]
+# then
+#  echo "---error_log_start"       >> ${MSG}
+#  cat ${ERROR}                    >> ${MSG}
+#  echo "---error_log_finish"      >> ${MSG}
+
+SUBJECT=" ${MYNAME} - ${SCRIPT}: "
+
+# cat ${FILETOSEND} > ${MSG}.txt
+# FILE='document=@'"${MSG}.txt"
+
+# curl -X POST \
+#      -F ${FILE} \
+#      -F "chat_id=${TCHATID}" \
+#      -F "caption=${SUBJECT} ${MSG}" \
+#      https://api.telegram.org/bot${DUFUS}/sendDocument
+
+# rm -f ${MSG}
+
+curl \
+  -d  "${SUBJECT} ${MSG}" \
+  ntfy.sh/${DUFUS}
+
+NAME=$(basename $FILETOSEND)
+curl \
+  -T ${FILETOSEND} \
+  -H "Filename: ${NAME}" \
+  ntfy.sh/${DUFUS}

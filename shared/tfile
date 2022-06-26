@@ -1,47 +1,54 @@
 #!/bin/sh
 
-if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
-then
-	BASE=/zTools/zPrivateConfig/shared
-fi
-
-if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
 then
 	BASE=/static
 fi
 
-if [ -f ${BASE}/secrets/.telegramenv ]
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
 then
-  . ${BASE}/secrets/.telegramenv
-else
-  echo "Created ${BASE}/secrets/.telegramenv"
-  echo "Please update contents and rerun"
-  echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
-  echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
-  exit 1
+	BASE=/zTools/zPrivateConfig
 fi
 
-SCRIPT=$1
-MSG=$2
-FILETOSEND=$3
-MYNAME=`uname -n`
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
 
-MSG=/var/tmp/${THIS_SCRIPT}.msg.$$
-#if [ -e ${ERROR} ]
+# if [ -f ${BASE}/secrets/.telegramenv ]
 # then
-#  echo "---error_log_start"       >> ${MSG}
-#  cat ${ERROR}                    >> ${MSG}
-#  echo "---error_log_finish"      >> ${MSG}
+#   . ${BASE}/secrets/.telegramenv
+# else
+#   echo "Created ${BASE}/secrets/.telegramenv"
+#   echo "Please update contents and rerun"
+#   echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
+#   echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
+#   exit 1
+# fi
 
-SUBJECT=" ${MYNAME} - ${SCRIPT}: "
+# SCRIPT=$1
+# MSG=$2
+# FILETOSEND=$3
+# MYNAME=`uname -n`
 
-cat ${FILETOSEND} > ${MSG}.txt
-FILE='document=@'"${MSG}.txt"
+# MSG=/var/tmp/${THIS_SCRIPT}.msg.$$
+# #if [ -e ${ERROR} ]
+# # then
+# #  echo "---error_log_start"       >> ${MSG}
+# #  cat ${ERROR}                    >> ${MSG}
+# #  echo "---error_log_finish"      >> ${MSG}
 
-curl -X POST \
-     -F ${FILE} \
-     -F "chat_id=${TCHATID}" \
-     -F "caption=${SUBJECT} ${MSG}" \
-     https://api.telegram.org/bot${DUFUS}/sendDocument
+# SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
-rm -f ${MSG}
+# cat ${FILETOSEND} > ${MSG}.txt
+# FILE='document=@'"${MSG}.txt"
+
+# curl -X POST \
+#      -F ${FILE} \
+#      -F "chat_id=${TCHATID}" \
+#      -F "caption=${SUBJECT} ${MSG}" \
+#      https://api.telegram.org/bot${DUFUS}/sendDocument
+
+# rm -f ${MSG}
+
+${BASE}/shared/_nfile $1 $2 $3
