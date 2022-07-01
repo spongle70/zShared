@@ -16,12 +16,14 @@ then
 else
   if [ -z ${DUFUS+x} ]
   then
-  echo "Created ${BASE}/secrets/.telegramenv"
-  echo "Please update contents and rerun"
-  echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
-  echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
-  exit 1
+    mkdir -p /static/secrets
+    echo "Created ${BASE}/secrets/.telegramenv"
+    echo "Please update contents and rerun"
+    echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
+    echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
+    exit 1
   else
+    mkdir -p /static/secrets
     echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.telegramenv
     echo "TCHATID=${TCHATID}" > ${BASE}/secrets/.telegramenv
   fi
