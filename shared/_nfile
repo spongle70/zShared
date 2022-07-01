@@ -29,6 +29,7 @@ else
     exit 1
   else
     echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.ntfyenv
+  fi
 fi
 
 SCRIPT=$1

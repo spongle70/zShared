@@ -14,11 +14,17 @@ if [ -f ${BASE}/secrets/.telegramenv ]
 then
   . ${BASE}/secrets/.telegramenv
 else
+  if [ -z ${DUFUS+x} ]
+  then
   echo "Created ${BASE}/secrets/.telegramenv"
   echo "Please update contents and rerun"
   echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
   echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
   exit 1
+  else
+    echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.telegramenv
+    echo "TCHATID=${TCHATID}" > ${BASE}/secrets/.telegramenv
+  fi
 fi
 
 SCRIPT=$1

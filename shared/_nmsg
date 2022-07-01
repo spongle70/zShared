@@ -20,11 +20,16 @@ if [ -f ${BASE}/secrets/.ntfyenv ]
 then
   . ${BASE}/secrets/.ntfyenv
 else
-  echo "Created ${BASE}/secrets/.ntfyenv"
-  echo "Please update contents and rerun"
-  echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
-  echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
-  exit 1
+  if [ -z ${DUFUS+x} ]
+  then
+    echo "Created ${BASE}/secrets/.ntfyenv"
+    echo "Please update contents and rerun"
+    echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
+    echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
+    exit 1
+  else
+    echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.ntfyenv
+  fi
 fi
 
 SCRIPT=$1
