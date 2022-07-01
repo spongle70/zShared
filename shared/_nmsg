@@ -40,12 +40,8 @@ MYNAME=`uname -n`
 
 SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
-# DROP='{"chat_id": "'"${TCHATID}"'", "text": " '"${SUBJECT}"' '"${MSG}"'"}'
-# curl -X POST \
-#      -H 'content-type: application/json' \
-#      -d "${DROP}" \
-#      https://api.telegram.org/bot${DUFUS}/sendmessage
 
-# rm -f ${MSG}
 
-curl -d "${SUBJECT} ${MSG}" ntfy.sh/${DUFUS}
+curl \
+  -d "${SUBJECT} ${MSG}" \
+  ntfy.sh/${DUFUS}

@@ -40,27 +40,13 @@ FILETOSEND=$3
 MYNAME=`uname -n`
 
 MSG=/var/tmp/${THIS_SCRIPT}.msg.$$
-#if [ -e ${ERROR} ]
-# then
-#  echo "---error_log_start"       >> ${MSG}
-#  cat ${ERROR}                    >> ${MSG}
-#  echo "---error_log_finish"      >> ${MSG}
 
 SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
-# cat ${FILETOSEND} > ${MSG}.txt
-# FILE='document=@'"${MSG}.txt"
 
-# curl -X POST \
-#      -F ${FILE} \
-#      -F "chat_id=${TCHATID}" \
-#      -F "caption=${SUBJECT} ${MSG}" \
-#      https://api.telegram.org/bot${DUFUS}/sendDocument
-
-# rm -f ${MSG}
 
 curl \
-  -d  "${SUBJECT} ${MSG}" \
+  -d "${SUBJECT} ${MSG}" \
   ntfy.sh/${DUFUS}
 
 NAME=$(basename $FILETOSEND)
