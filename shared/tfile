@@ -19,6 +19,7 @@ if [ -d /volume12/zTools/SyncMINT66?/zTools/zShared ]
 then
 	BASE=/volume12/zTools/SyncMINT66?/zTools/zShared
 fi
+
 # if [ -f ${BASE}/secrets/.telegramenv ]
 # then
 #   . ${BASE}/secrets/.telegramenv
