@@ -51,7 +51,7 @@ SUBJECT=" ${MYNAME} - ${SCRIPT}: "
 
 
 curl \
-  -d "${SUBJECT} ${MSG}" \
+  -d "${SUBJECT} " \
   ntfy.sh/${DUFUS}
 
 NAME=$(basename $FILETOSEND)
