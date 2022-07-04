@@ -64,10 +64,6 @@ fi
 if [ -f ${BASE}/shared/myshared ]
 then
   . ${BASE}/shared/myshared
-else
-  echo "Environment file not found"
-  exit 1
-fi
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
@@ -75,6 +71,11 @@ then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
+if [ -z ${BASE+x} ]
+then
+  echo "Can not find BASE directory"
+  exit 1
+fi
 
 SHARED=${BASE}/shared
 
