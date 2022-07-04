@@ -16,9 +16,10 @@ then
 	BASE=/zTools/zShared
 fi
 
-if [ -d /volume12/zTools/SyncMINT66?/zTools/zShared ]
+MYNAME=$(uname -n)
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
 then
-	BASE=/volume12/zTools/SyncMINT66?/zTools/zShared
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
 if [ -f ${BASE}/secrets/.ntfyenv ]
