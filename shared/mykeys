@@ -64,6 +64,7 @@ fi
 if [ -f ${BASE}/shared/myshared ]
 then
   . ${BASE}/shared/myshared
+fi
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
