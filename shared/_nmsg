@@ -43,14 +43,14 @@ then
 else
   if [ -z ${DUFUS+x} ]
   then
-    mkdir -p /static/secrets
+    mkdir -p ${BASE}/secrets
     echo "Created ${BASE}/secrets/.ntfyenv"
     echo "Please update contents and rerun"
     echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
     echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
     exit 1
   else
-    mkdir -p /static/secrets
+    mkdir -p ${BASE}/secrets
     echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.ntfyenv
   fi
 fi
