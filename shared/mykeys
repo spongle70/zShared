@@ -57,17 +57,12 @@ VIBBLERKEY=${KEYSTORE}/vibblerkey
 
 if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
 then
-	BASE=/zTools/zPrivateConfig/shared
+	BASE=/zTools/zPrivateConfig
 fi
 
 if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
 then
 	BASE=/static
-fi
-
-if [ -f ${BASE}/shared/myshared ]
-then
-  . ${BASE}/shared/myshared
 fi
 
 MYNAME=$(uname -n)
@@ -80,6 +75,11 @@ if [ -z ${BASE+x} ]
 then
   echo "Can not find BASE directory"
   exit 1
+fi
+
+if [ -f ${BASE}/shared/myshared ]
+then
+  . ${BASE}/shared/myshared
 fi
 
 SHARED=${BASE}/shared
