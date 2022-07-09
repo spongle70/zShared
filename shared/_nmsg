@@ -1,38 +1,50 @@
 #!/bin/sh
 echo $0
 
-if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+# if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+# then
+# 	BASE=/static
+# fi
+
+# if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+# then
+# 	BASE=/zTools/zPrivateConfig
+# fi
+
+# if [ -d /zTools/zShared ]
+# then
+# 	BASE=/zTools/zShared
+# fi
+
+if [  -d /static ] && [ ! -d /zTools ]
 then
 	BASE=/static
-fi
-
-if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
-then
-	BASE=/zTools/zPrivateConfig
-fi
-
-if [ -d /zTools/zShared ]
-then
-	BASE=/zTools/zShared
-fi
-
-if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
-then
-	BASE=/static
   echo "BASE=${BASE}"
 fi
 
-if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+if [ ! -d /static ] && [ -d /zTools ]
 then
-	BASE=/zTools/zShared
+	BASE=/zTools
   echo "BASE=${BASE}"
 fi
 
-if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
-then
-	BASE=/zTools/zPrivateConfig
-  echo "BASE=${BASE}"
-fi
+# if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+# then
+# 	BASE=/static
+#   echo "BASE=${BASE}"
+# fi
+
+# if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+# then
+# 	BASE=/zTools/zShared
+#   echo "BASE=${BASE}"
+# fi
+
+# if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
+# then
+# 	BASE=/zTools/zPrivateConfig
+#   echo "BASE=${BASE}"
+# fi
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
