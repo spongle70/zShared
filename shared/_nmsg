@@ -19,13 +19,11 @@ echo $0
 if [  -d /static ] && [ ! -d /zTools ]
 then
 	BASE=/static
-  echo "BASE=${BASE}"
 fi
 
 if [ ! -d /static ] && [ -d /zTools ]
 then
 	BASE=/zTools
-  echo "BASE=${BASE}"
 fi
 
 # if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
@@ -51,7 +49,8 @@ if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
 then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
-
+  
+echo "BASE=${BASE}"
 if [ -f ${BASE}/secrets/.ntfyenv ]
 then
   . ${BASE}/secrets/.ntfyenv
