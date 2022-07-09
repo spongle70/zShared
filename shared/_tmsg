@@ -1,13 +1,40 @@
 #!/bin/sh
+echo $0
 
-if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
-then
-	BASE=/zTools/zPrivateConfig/shared
-fi
-
-if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
 then
 	BASE=/static
+fi
+
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zPrivateConfig
+fi
+
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
+
+if [ ! -d /zTools/zPrivateConfig ] && [  -d /static ] && [ ! -d /zTools/zShared ]
+then
+	BASE=/static
+fi
+
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] && [ ! -d /zTools/zShared ]
+then
+	BASE=/zTools/zPrivateConfig
+fi
+
+if [ ! -d /zTools/zPrivateConfig ] && [ ! -d /static ] && [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
+
+MYNAME=$(uname -n)
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
+then
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
 if [ -f ${BASE}/secrets/.telegramenv ]

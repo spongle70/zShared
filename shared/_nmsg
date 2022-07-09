@@ -16,11 +16,6 @@ then
 	BASE=/zTools/zShared
 fi
 
-if [ ! -d /zTools/zPrivateConfig ] && [ ! -d /static ] && [ -d /zTools/zShared ]
-then
-	BASE=/zTools/zShared
-fi
-
 if [ ! -d /zTools/zPrivateConfig ] && [  -d /static ] && [ ! -d /zTools/zShared ]
 then
 	BASE=/static
@@ -29,6 +24,11 @@ fi
 if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] && [ ! -d /zTools/zShared ]
 then
 	BASE=/zTools/zPrivateConfig
+fi
+
+if [ ! -d /zTools/zPrivateConfig ] && [ ! -d /static ] && [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
 fi
 
 MYNAME=$(uname -n)
