@@ -19,16 +19,19 @@ fi
 if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
 then
 	BASE=/static
+  echo "BASE=${BASE}"
 fi
 
 if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
 then
 	BASE=/zTools/zShared
+  echo "BASE=${BASE}"
 fi
 
 if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
 then
 	BASE=/zTools/zPrivateConfig
+  echo "BASE=${BASE}"
 fi
 
 MYNAME=$(uname -n)
