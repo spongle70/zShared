@@ -37,6 +37,11 @@ then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
+echo "BASE=${BASE}"
+if [ -f ${BASE}/secrets/.${MYNAME} ]
+then
+  . ${BASE}/secrets/.${MYNAME}
+else
 if [ -f ${BASE}/secrets/.ntfyenv ]
 then
   . ${BASE}/secrets/.ntfyenv
@@ -44,14 +49,10 @@ else
   if [ -z ${DUFUS+x} ]
   then
     mkdir -p ${BASE}/secrets
-    echo "Created ${BASE}/secrets/.ntfyenv"
+      echo "Creat ${BASE}/secrets/.ntfyenv"
     echo "Please update contents and rerun"
-    echo "DUFUS="" " > ${BASE}/secrets/.ntfyenv
-    echo "TCHATID="" " >> ${BASE}/secrets/.ntfyenv
     exit 1
-  else
-    mkdir -p ${BASE}/secrets
-    echo "DUFUS=${DUFUS}" > ${BASE}/secrets/.ntfyenv
+    fi
   fi
 fi
 
