@@ -6,7 +6,7 @@ then
 	BASE=/static
 fi
 
-if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+if [ ! -d /static ] && [ -d /zTools/zPrivateConfig ]
 then
 	BASE=/zTools/zPrivateConfig
 fi
