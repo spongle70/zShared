@@ -26,28 +26,30 @@ then
 	BASE=/zTools/zPrivateConfig
 fi
 
-# if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
-# then
-# 	BASE=/static
-#   echo "BASE=${BASE}"
-# fi
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
 
-# if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
-# then
-# 	BASE=/zTools/zShared
-#   echo "BASE=${BASE}"
-# fi
+if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+then
+	BASE=/static
+fi
 
-# if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
-# then
-# 	BASE=/zTools/zPrivateConfig
-#   echo "BASE=${BASE}"
-# fi
+if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+then
+	BASE=/zTools/zShared
+fi
+
+if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
+then
+	BASE=/zTools/zPrivateConfig
+fi
 
 MYNAME=$(uname -n)
-if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zPrivateConfig ]
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
 then
-	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zPrivateConfig
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
 echo "BASE=${BASE}"
@@ -55,16 +57,16 @@ if [ -f ${BASE}/secrets/.${MYNAME} ]
 then
   . ${BASE}/secrets/.${MYNAME}
 else
-  if [ -f ${BASE}/secrets/.ntfyenv ]
+if [ -f ${BASE}/secrets/.ntfyenv ]
+then
+  . ${BASE}/secrets/.ntfyenv
+else
+  if [ -z ${DUFUS+x} ]
   then
-    . ${BASE}/secrets/.ntfyenv
-  else
-    if [ -z ${DUFUS+x} ]
-    then
-      mkdir -p ${BASE}/secrets
+    mkdir -p ${BASE}/secrets
       echo "Creat ${BASE}/secrets/.ntfyenv"
-      echo "Please update contents and rerun"
-      exit 1
+    echo "Please update contents and rerun"
+    exit 1
     fi
   fi
 fi
