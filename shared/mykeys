@@ -55,12 +55,12 @@ RSYNCKEY=${KEYSTORE}/rsynckey
 VIBBLERKEY=${KEYSTORE}/vibblerkey
 
 
-if [ -d /zTools/zPrivateConfig/shared ] && [ ! -d /static ] 
+if [ -d /zTools/zShared/shared ] && [ ! -d /static ] 
 then
-	BASE=/zTools/zPrivateConfig
+	BASE=/zTools/zShared
 fi
 
-if [ ! -d /zTools/zPrivateConfig/shared ] && [ -d /static ]
+if [ ! -d /zTools/zShared/shared ] && [ -d /static ]
 then
 	BASE=/static
 fi
