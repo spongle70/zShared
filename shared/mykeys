@@ -16,8 +16,8 @@ check_bastionkey () {
 if [ ! -f ${BASTIONKEY} ]
 then
  ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C bastion@${NAME}
- cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_b${NAME}${LAST}.pub
- cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}${LAST}.pub
+ cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_b${NAME}.pub
+ cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}.pub
 fi
 }
 
@@ -32,7 +32,7 @@ check_rsynckey () {
 if [ ! -f ${RSYNCKEY} ]
 then
  ssh-keygen -o -a 100 -t ed25519 -f ${RSYNCKEY} -N "" -C rsync@${NAME}
- cp -p ${RSYNCKEY}.pub ${KEYSTORE}/_r${NAME}${LAST}.pub
+ cp -p ${RSYNCKEY}.pub ${KEYSTORE}/_r${NAME}.pub
 fi
 }
 
@@ -40,7 +40,7 @@ check_vibblerkey () {
 if [ ! -f ${VIBBLERKEY} ]
 then
  ssh-keygen -o -a 100 -t ed25519 -f ${VIBBLERKEY} -N "" -C vibbler@${NAME}
- cp -p ${VIBBLERKEY}.pub ${KEYSTORE}/_v${NAME}${LAST}.pub
+ cp -p ${VIBBLERKEY}.pub ${KEYSTORE}/_v${NAME}.pub
 fi
 }
 
