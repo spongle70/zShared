@@ -1,0 +1,25 @@
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_LIBRARY_PATH
+
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
+
+PATH=$PATH:/usr/local/bin
+export PATH
+
+
+
+#en_US.UTF8
+LANG=C
+LANGUAGE=C
+LC_ALL=C
+LC_COLLATE=C
+LC_CTYPE=C
+LC_MESSAGES=C
+
+export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANGUAGE LANG 
+
+EDITOR=vi
+export EDITOR
+
+#localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8

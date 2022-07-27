@@ -14,9 +14,6 @@ set_constants () {
   VERSION=
 }
 
-
-################### shared functions below
-
 get_myip () {
 # dig not installed on alpine
   #MYEXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
@@ -33,4 +30,3 @@ get_myip () {
   
   export MYFULLIP MYNETWORK MYIP MYEXTERNALIP
 }
-######
