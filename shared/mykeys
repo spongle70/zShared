@@ -88,6 +88,8 @@ SHARED=${BASE}/shared
 
 NAME=$(uname -n|cut -c2-4)
 LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
+NAME=$(uname -n)
+LAST=$(uname -n)
 
 check_keystore
 check_bastionkey
