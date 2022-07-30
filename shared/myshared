@@ -23,10 +23,20 @@ get_myip () {
   MYNETWORK=$(echo ${MYFULLIP}| cut -f1-3 -d.)
   MYIP=$(echo ${MYFULLIP}| cut -f4 -d.)
   echo "MYEXTERNALIP ${MYEXTERNALIP}"
+  echo "MYNETWORK ${MYNETWORK}"
   echo "MYFULLIP ${MYFULLIP}"
   echo "MYIP ${MYIP}"
-  echo "MYNETWORK ${MYNETWORK}"
+
   echo ""
   
-  export MYFULLIP MYNETWORK MYIP MYEXTERNALIP
+  export MYEXTERNALIP MYNETWORK MYFULLIP MYIP
+}
+
+generate_random() {
+  a=1
+  b=100
+  DIFF=$(($b-$a+1))
+  RANDOM=$$
+  R=$(($(($RANDOM%$DIFF))+$a))
+  echo $R
 }
