@@ -1,3 +1,60 @@
+_setaliases() {
+  case "$THISOS" in
+    darwin)
+        # Use MacVim's terminal vim for awesomeness support
+        hash rvim 2>/dev/null  && alias vim=rvim
+        local FIND_EGREP="-E .";
+        local LS_COLORFLAG='-G'
+        ;;
+    linux)
+        alias ls='ls -G'
+        local FIND_EGREP=". -regextype posix-egrep";
+        local LS_COLORFLAG='--color=auto'
+        ;;
+  esac
+
+  alias ls="ls $LS_COLORFLAG"
+  alias ll='ls -hl'
+  alias l.='ls -d .* --color=auto'
+  alias tree='tree -C'
+
+  alias cruft="find $FIND_EGREP -regex '.*swo|.*swp|.*pyc|.*pyo|.*~' -exec rm {} \;"
+
+  alias p="ps aux |grep "
+  alias grep="grep --color=auto"
+
+  alias facts="echo -ne '\033[36m'; curl -s randomfunfacts.com | grep '<i>' | sed 's/.*<i>\(.*\)<\/i>.*/\1/'; echo -ne '\033[0m'; tput sgr0"
+
+  # show numeric permissions
+  local FORMATFLAG="-c"
+  if ( uname -a | grep Darwin >/dev/null); then
+    FORMATFLAG="-f"
+  fi
+  alias perms="stat $FORMATFLAG '%A %a %n' *"
+
+  # Add an "alert" alias for long running commands.  Use like so:
+  #   sleep 10; alert
+  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+#  alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+#  alias d='dotfiles'
+  alias .bashrc='source ~/.bashrc'
+
+#  alias vimall='vim -p $(find . -type f)'
+
+#  alias vp='vagrant provision'
+#  alias vdu='vagrant destroy -f; vagrant up'
+#  alias be='bundle exec'
+#  alias bek='bundle exec kitchen'
+  alias sha256='shasum -a 256'
+
+#  local JSONCHECK="require 'json';puts(JSON.pretty_generate JSON.parse(STDIN.read))"
+#  alias checkjson="ruby -e \"$JSONCHECK\""
+
+  alias path='echo -e ${PATH//:/\\n}'
+}
+
+
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH
 
@@ -23,3 +80,5 @@ EDITOR=vi
 export EDITOR
 
 #localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
+_setaliases
