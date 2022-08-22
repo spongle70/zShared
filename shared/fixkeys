@@ -1,0 +1,74 @@
+#!/bin/sh
+set -e
+
+# Common environment variables
+#
+
+
+check_keystore () {
+if [ ! -d ${KEYSTORE} ]
+then
+ mkdir -p ${KEYSTORE}
+fi
+}
+
+delete_keys () {
+if [ -d ${KEYSTORE} ]
+then
+ rm ${KEYSTORE}/*
+ echo "$0: keys deleted"
+else
+ echo "ERROR: keystore not found"
+fi
+}
+
+
+
+#####
+# Main script below
+#####
+KEYSTORE=~/.mykeys
+BASTIONKEY=${KEYSTORE}/bastionkey
+GITKEY=${KEYSTORE}/gitkey
+RSYNCKEY=${KEYSTORE}/rsynckey
+VIBBLERKEY=${KEYSTORE}/vibblerkey
+
+
+if [ -d /zTools/zShared/shared ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zShared
+fi
+
+if [ ! -d /zTools/zShared/shared ] && [ -d /static ]
+then
+	BASE=/static
+fi
+
+MYNAME=$(uname -n)
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
+then
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
+fi
+
+if [ -z ${BASE+x} ]
+then
+  echo "Can not find BASE directory"
+  exit 1
+fi
+
+if [ -f ${BASE}/shared/myshared ]
+then
+  . ${BASE}/shared/myshared
+fi
+
+SHARED=${BASE}/shared
+
+. ${SHARED}/myshared
+
+NAME=$(uname -n|cut -c2-4)
+LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
+NAME=$(uname -n)
+LAST=$(uname -n)
+
+check_keystore
+delete_keys
