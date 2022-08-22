@@ -15,10 +15,9 @@ fi
 send_keys () {
 if [ -d ${KEYSTORE} ]
 then
- cat ${KEYSTORE}/*.pub 
  echo "$0: email the below to requestor"
  echo "--------------------------------"
-
+ cat ${KEYSTORE}/*.pub 
 else
  echo "ERROR: keystore not found"
 fi
