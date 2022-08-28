@@ -158,10 +158,8 @@ _setprompt() {
       ;;
     2line)
       # Default PROMPT_COLOR values
-      : ${PROMPT_COLOR:=Yellow}
-      : ${PROMPT_COLOR2:=Blue}
-      C1=${!PROMPT_COLOR}
-      C2=${!PROMPT_COLOR2}
+      C1=${Yellow}
+      C2=${Blue}
 
       # ┌(jer@myhost)─(✗)─(10:18 PM Sun Apr 14)
       # └─(~/dev/git/myproject)─>
