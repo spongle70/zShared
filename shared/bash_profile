@@ -9,14 +9,8 @@ fi
 
 
 _setpath() {
-  local paths=(
-    /usr/local/bin
-    /usr/local/sbin
-    /usr/local/sqlite/bin
-  )
-
-  local i
-  for i in ${paths[@]}; do
+  for i in /usr/local/bin /usr/local/sbin /usr/local/sqlite/bin
+  do
     # Move these paths to the front
     PATH=$(echo $PATH | sed -e "s#$i##g")
     if [ -d $i ]; then
@@ -30,13 +24,8 @@ _setpath() {
 }
 
 _setldpath() {
-  local paths=(
-    /usr/local/sqlite/lib
-    /usr/local/lib
-  )
-
-  local i
-  for i in ${paths[@]}; do
+  for i in /usr/local/sqlite/lib /usr/local/lib
+  do
     # Move these paths to the front
     LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -e "s#$i##g")
     if [ -d $i ]; then
@@ -50,12 +39,8 @@ _setldpath() {
 }
 
 _setldrunpath() {
-  local paths=(
-    /usr/local/sqlite/lib
-  )
-
-  local i
-  for i in ${paths[@]}; do
+  for i in /usr/local/sqlite/lib 
+  do
     # Move these paths to the front
     LD_RUN_PATH=$(echo $LD_RUN_PATH | sed -e "s#$i##g")
     if [ -d $i ]; then
