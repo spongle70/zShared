@@ -7,17 +7,6 @@ if [[ $- != *i* ]] ; then
   return
 fi
 
-THISOS=$(uname | awk '{print tolower($1)}')
-THISHOST=$(uname -n)
-
-
-# History control
-# don't use duplicate lines or lines starting with space
-HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
-# append to the history file instead of overwrite
-shopt -s histappend
 
 _setpath() {
   local paths=(
@@ -43,6 +32,7 @@ _setpath() {
 _setldpath() {
   local paths=(
     /usr/local/sqlite/lib
+    /usr/local/lib
   )
 
   local i
@@ -112,24 +102,8 @@ _setaliases() {
   fi
   alias perms="stat $FORMATFLAG '%A %a %n' *"
 
-  # Add an "alert" alias for long running commands.  Use like so:
-  #   sleep 10; alert
-  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-#  alias dotfiles='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-#  alias d='dotfiles'
   alias .bashrc='source ~/.bashrc'
-
-#  alias vimall='vim -p $(find . -type f)'
-
-#  alias vp='vagrant provision'
-#  alias vdu='vagrant destroy -f; vagrant up'
-#  alias be='bundle exec'
-#  alias bek='bundle exec kitchen'
-  alias sha256='shasum -a 256'
-
-#  local JSONCHECK="require 'json';puts(JSON.pretty_generate JSON.parse(STDIN.read))"
-#  alias checkjson="ruby -e \"$JSONCHECK\""
 
   alias path='echo -e ${PATH//:/\\n}'
 }
@@ -251,21 +225,18 @@ _manpagecolor() {
 }
 
 
+THISOS=$(uname | awk '{print tolower($1)}')
+THISHOST=$(uname -n)
 
-
-
-
-
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-export LD_LIBRARY_PATH
-
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-export PKG_CONFIG_PATH
-
-PATH=$PATH:/usr/local/bin
-export PATH
-
-
+_setpath
+_setldpath
+_setldrunpath
+_setaliases
+_setlocalaliases
+_setprompt 2line
+_sethistory
+_moreless
+_manpagecolor
 
 #en_US.UTF8
 LANG=C
@@ -280,20 +251,6 @@ export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANGUAGE LANG
 EDITOR=vi
 export EDITOR
 
-#localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
-
-_setpath
-_setldpath
-_setldrunpath
-_setaliases
-_setlocalaliases
-_setprompt 2line
-_sethistory
-_moreless
-_manpagecolor
-
-export EDITOR=vim
 
 # Correct minor spelling errors in cd commands
 shopt -s cdspell
@@ -306,14 +263,6 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 #export TERM=ansi
 export TERM=xterm-256color
 #export PIP_REQUIRE_VIRTUALENV=true
-
-export GOPATH=${HOME}/dev/go
-
-_sources
-# Mac likes to discard ctl-o
-if [[ $THISOS == darwin ]]; then
-  stty discard undef
-fi
 
 export ANSIBLE_STDOUT_CALLBACK=yaml
 export GPODDER_HOME=~/DocumentsPodcasts/config
