@@ -58,13 +58,13 @@ _setaliases() {
     darwin)
         # Use MacVim's terminal vim for awesomeness support
         hash rvim 2>/dev/null  && alias vim=rvim
-        local FIND_EGREP="-E .";
-        local LS_COLORFLAG='-G'
+        FIND_EGREP="-E .";
+        LS_COLORFLAG='-G'
         ;;
     linux)
         alias ls='ls -G'
-        local FIND_EGREP=". -regextype posix-egrep";
-        local LS_COLORFLAG='--color=auto'
+        FIND_EGREP=". -regextype posix-egrep";
+        LS_COLORFLAG='--color=auto'
         ;;
   esac
 
@@ -81,7 +81,7 @@ _setaliases() {
   alias facts="echo -ne '\033[36m'; curl -s randomfunfacts.com | grep '<i>' | sed 's/.*<i>\(.*\)<\/i>.*/\1/'; echo -ne '\033[0m'; tput sgr0"
 
   # show numeric permissions
-  local FORMATFLAG="-c"
+  FORMATFLAG="-c"
   if ( uname -a | grep Darwin >/dev/null); then
     FORMATFLAG="-f"
   fi
@@ -123,31 +123,31 @@ _setlocalaliases() {
 }
 
 _setprompt() {
-  local SAVEHISTORY="history -a"
-  local SETWINDOWTITLE='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+  SAVEHISTORY="history -a"
+  SETWINDOWTITLE='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
-  local TMUXCMD=''
+  TMUXCMD=''
   if [ -n $TMUX ]; then
-    local TMUXENV='tmux set-environment -g CWD "$PWD"'
-    local TMUXPATH='tmux set-option default-path $PWD'
-    local TMUXCMD="($TMUXENV 2>/dev/null && $TMUXPATH 2>/dev/null >&2)"
+    TMUXENV='tmux set-environment -g CWD "$PWD"'
+    TMUXPATH='tmux set-option default-path $PWD'
+    TMUXCMD="($TMUXENV 2>/dev/null && $TMUXPATH 2>/dev/null >&2)"
   fi
 
   export PROMPT_COMMAND="$SETWINDOWTITLE;$SAVEHISTORY;$TMUXCMD"
 
   # Reset
-  local Color_Off='\[\e[0m\]'       # Text Reset
+  Color_Off='\[\e[0m\]'       # Text Reset
 
   # Regular Colors
-  local Black='\[\e[0;30m\]'        # Black
-  local Red='\[\e[0;31m\]'          # Red
-  local Green='\[\e[0;32m\]'        # Green
-  local Yellow='\[\e[0;33m\]'       # Yellow
-  local Blue='\[\e[0;34m\]'         # Blue
-  local Purple='\[\e[0;35m\]'       # Purple
-  local Cyan='\[\e[0;36m\]'         # Cyan
-  local White='\[\e[0;37m\]'        # White
-  local NEWLINE="\n"
+  Black='\[\e[0;30m\]'        # Black
+  Red='\[\e[0;31m\]'          # Red
+  Green='\[\e[0;32m\]'        # Green
+  Yellow='\[\e[0;33m\]'       # Yellow
+  Blue='\[\e[0;34m\]'         # Blue
+  Purple='\[\e[0;35m\]'       # Purple
+  Cyan='\[\e[0;36m\]'         # Cyan
+  White='\[\e[0;37m\]'        # White
+  NEWLINE="\n"
 
   # Use for chroots, venvs, or other info that should be stuck in the prompt
   EXTRAPROMPT=$2
@@ -160,17 +160,17 @@ _setprompt() {
       # Default PROMPT_COLOR values
       : ${PROMPT_COLOR:=Yellow}
       : ${PROMPT_COLOR2:=Blue}
-      local C1=${!PROMPT_COLOR}
-      local C2=${!PROMPT_COLOR2}
+      C1=${!PROMPT_COLOR}
+      C2=${!PROMPT_COLOR2}
 
       # ┌(jer@myhost)─(✗)─(10:18 PM Sun Apr 14)
       # └─(~/dev/git/myproject)─>
-      local DASH="\342\224\200"
-      local X="\342\234\227"
-      local ERRCODE="\$([[ \$? != 0 ]] && echo \"${DASH}(${Red}${X}${White})\")${DASH}"
+      DASH="\342\224\200"
+      X="\342\234\227"
+      ERRCODE="\$([[ \$? != 0 ]] && echo \"${DASH}(${Red}${X}${White})\")${DASH}"
 
       LINE1="${White}\342\224\214(${C1}\u@\h$EXTRAPROMPT${White})${ERRCODE}(${C1}\@ \d${White})"
-      local LINE2="\342\224\224\342\224\200(${C2}\w${White})-> "
+      LINE2="\342\224\224\342\224\200(${C2}\w${White})-> "
       export PS1="${NEWLINE}${LINE1}${NEWLINE}${LINE2}${Color_Off}"
       ;;
     3line)
