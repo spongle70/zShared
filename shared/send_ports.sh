@@ -4,7 +4,7 @@ set -u
 ########################################################
 send_ports () {
   . /etc/os-release
-  if [ ${ID} = "alpine"]
+  if [ ${ID} = "alpine" ]
   then
     netstat -tulnp > /var/tmp/crap.$$
   else
