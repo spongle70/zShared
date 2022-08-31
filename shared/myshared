@@ -15,10 +15,13 @@ set_constants () {
 }
 
 get_myip () {
-# dig not installed on alpine
-  #MYEXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
-  #MYEXTERNALIP=$(curl checkip.dyndns.org| awk -F'<' '{print $7 }'| awk -F' ' '{ print $4 }')
-  MYEXTERNALIP=$(curl ipinfo.io/ip)
+  #
+  # dig not installed on alpine
+  #
+  # MYEXTERNALIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+  # MYEXTERNALIP=$(curl checkip.dyndns.org| awk -F'<' '{print $7 }'| awk -F' ' '{ print $4 }')
+  # MYEXTERNALIP=$(curl ipinfo.io/ip)
+  MYEXTERNALIP=$(curl checkip.amazonaws.com)
   MYFULLIP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
   MYNETWORK=$(echo ${MYFULLIP}| cut -f1-3 -d.)
   MYIP=$(echo ${MYFULLIP}| cut -f4 -d.)
