@@ -44,6 +44,13 @@ then
 fi
 }
 
+check_key () {
+  if [ ! -f ${KEYSTORE}/${KEYNAME} ]
+  then
+    ssh-keygen -o -a 100 -t ed25519 -f ${KEYSTORE}/${KEYNAME} -N "" -C ${KEYNAME}@${MACHINENAME}
+    cp -p ${KEYSTORE}/${KEYNAME}.pub ${KEYSTORE}/${KEYNAME_SHORT}${MACHINENAME}.pub
+  fi
+}
 
 #####
 # Main script below
@@ -97,3 +104,14 @@ check_bastionkey
 check_gitkey
 check_rsynckey
 check_vibblerkey
+
+
+MACHINENAME=$(uname -n)
+
+KEYNAME=github
+KEYNAME_SHORT=_gh
+check_key
+
+KEYNAME=gitea
+KEYNAME_SHORT=_gt
+check_key
