@@ -48,8 +48,8 @@ check_key () {
   if [ ! -f ${KEYSTORE}/${KEYNAME} ]
   then
     ssh-keygen -o -a 100 -t ed25519 -f ${KEYSTORE}/${KEYNAME} -N "" -C ${KEYNAME}@${MACHINENAME}
-    cp -p ${KEYSTORE}/${KEYNAME}.pub ${KEYSTORE}/${KEYNAME_SHORT}${MACHINENAME}.pub
   fi
+  cp -p ${KEYSTORE}/${KEYNAME}.pub ${KEYSTORE}/${KEYNAME_SHORT}${MACHINENAME}.pub
 }
 
 #####
@@ -123,7 +123,7 @@ KEYNAME=bastion
 KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)${ID}
 check_key
 
-KEYNAME=rsynckey
+KEYNAME=rsync
 KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)${ID}
 check_key
 
