@@ -29,8 +29,12 @@ get_public_bastion () {
   then
       cat _b*.pub >> ${AUTHFILE}
       cat _d*.pub >> ${AUTHFILE}
+      # remove above lines in near future
+      cat _[1-9]ba*.pub >> ${AUTHFILE}
   else
       cat _v*.pub >> ${AUTHFILE}
+      # remove above lines in near future
+      cat _[1-9]vi*.pub >> ${AUTHFILE}
   fi
 
 # testing

@@ -107,11 +107,24 @@ check_vibblerkey
 
 
 MACHINENAME=$(uname -n)
+PREFIX=_1
 
 KEYNAME=github
-KEYNAME_SHORT=_gh
+KEYNAME_SHORT=${PREFIX}gh
 check_key
 
 KEYNAME=gitea
-KEYNAME_SHORT=_gt
+KEYNAME_SHORT=${PREFIX}gt
+check_key
+
+KEYNAME=bastion
+KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)
+check_key
+
+KEYNAME=rsync
+KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)
+check_key
+
+KEYNAME=vibbler
+KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)
 check_key
