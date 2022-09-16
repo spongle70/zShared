@@ -17,7 +17,7 @@ if [ -d ${KEYSTORE} ]
 then
  echo "$0: email the below to requestor"
  echo "--------------------------------"
- cat ${KEYSTORE}/*.pub 
+ cat ${KEYSTORE}/*.pub |sort | uniq
 else
  echo "ERROR: keystore not found"
 fi
