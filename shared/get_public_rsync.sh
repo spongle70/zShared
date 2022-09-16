@@ -26,6 +26,8 @@ get_public_rsync () {
   cd zKeys-main
   echo "Save keys from github"
   cat _r*.pub >> ${AUTHFILE}
+  # remove above lines in near future
+  cat _[1-9]vi*.pub >> ${AUTHFILE}
 
   echo "The approved keys are:"
   cat ${AUTHFILE}
