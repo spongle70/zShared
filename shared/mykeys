@@ -5,43 +5,44 @@ set -e
 #
 
 
+
 check_keystore () {
-if [ ! -d ${KEYSTORE} ]
-then
- mkdir -p ${KEYSTORE}
-fi
+  if [ ! -d ${KEYSTORE} ]
+  then
+    mkdir -p ${KEYSTORE}
+  fi
 }
 
 check_bastionkey () {
-if [ ! -f ${BASTIONKEY} ]
-then
- ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C bastion@${NAME}
- cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_b${NAME}.pub
- cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}.pub
-fi
+  if [ ! -f ${BASTIONKEY} ]
+  then
+    ssh-keygen -o -a 100 -t ed25519 -f ${BASTIONKEY} -N "" -C bastion@${NAME}
+    cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_b${NAME}.pub
+    cp -p ${BASTIONKEY}.pub ${KEYSTORE}/_d${NAME}.pub
+  fi
 }
 
 check_gitkey () {
-if [ ! -f ${GITKEY} ]
-then
- ssh-keygen -o -a 100 -t ed25519 -f ${GITKEY} -N "" -C git@${NAME}
-fi
+  if [ ! -f ${GITKEY} ]
+  then
+    ssh-keygen -o -a 100 -t ed25519 -f ${GITKEY} -N "" -C git@${NAME}
+  fi
 }
 
 check_rsynckey () {
-if [ ! -f ${RSYNCKEY} ]
-then
- ssh-keygen -o -a 100 -t ed25519 -f ${RSYNCKEY} -N "" -C rsync@${NAME}
- cp -p ${RSYNCKEY}.pub ${KEYSTORE}/_r${NAME}.pub
-fi
+  if [ ! -f ${RSYNCKEY} ]
+  then
+    ssh-keygen -o -a 100 -t ed25519 -f ${RSYNCKEY} -N "" -C rsync@${NAME}
+    cp -p ${RSYNCKEY}.pub ${KEYSTORE}/_r${NAME}.pub
+  fi
 }
 
 check_vibblerkey () {
-if [ ! -f ${VIBBLERKEY} ]
-then
- ssh-keygen -o -a 100 -t ed25519 -f ${VIBBLERKEY} -N "" -C vibbler@${NAME}
- cp -p ${VIBBLERKEY}.pub ${KEYSTORE}/_v${NAME}.pub
-fi
+  if [ ! -f ${VIBBLERKEY} ]
+  then
+    ssh-keygen -o -a 100 -t ed25519 -f ${VIBBLERKEY} -N "" -C vibbler@${NAME}
+    cp -p ${VIBBLERKEY}.pub ${KEYSTORE}/_v${NAME}.pub
+  fi
 }
 
 check_key () {
