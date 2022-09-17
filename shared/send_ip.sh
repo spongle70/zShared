@@ -4,10 +4,10 @@ set -u
 ########################################################
 send_ip () {
   get_myip
-  ${ZSHARED}/shared/tmsg `uname -n` ${MYEXTERNALIP}
-  ${ZSHARED}/shared/tmsg `uname -n` ${MYFULLIP}
+  # ${ZSHARED}/shared/tmsg `uname -n` ${MYEXTERNALIP}
+  # ${ZSHARED}/shared/tmsg `uname -n` ${MYFULLIP}
 
-  MSG="Internal:${INTERNAL}:External:${EXTERNAL}"
+  MSG="Internal:${MYFULLIP}:External:${MYEXTERNALIP}"
 
   ${ZSHARED}/shared/tmsg `uname -n` ${MSG}
 
