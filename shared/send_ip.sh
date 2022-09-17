@@ -6,6 +6,11 @@ send_ip () {
   get_myip
   ${ZSHARED}/shared/tmsg `uname -n` ${MYEXTERNALIP}
   ${ZSHARED}/shared/tmsg `uname -n` ${MYFULLIP}
+
+  MSG="Internal:${INTERNAL}:External:${EXTERNAL}"
+
+  ${ZSHARED}/shared/tmsg `uname -n` ${MSG}
+
   echo "${SERVER_TYPE}: finished $0"
 }
 
