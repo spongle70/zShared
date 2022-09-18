@@ -23,6 +23,18 @@ else
 fi
 }
 
+email_keys () {
+if [ -d ${KEYSTORE} ]
+then
+ echo "$0: email the below to requestor"
+ echo "--------------------------------"
+ cat ${KEYSTORE}/*.pub |sort | uniq
+ zip /var/tmp/keys.zip ~/._*.pub
+ 
+else
+ echo "ERROR: keystore not found"
+fi
+}
 
 
 #####
@@ -73,3 +85,4 @@ LAST=$(uname -n)
 
 check_keystore
 send_keys
+email_keys
