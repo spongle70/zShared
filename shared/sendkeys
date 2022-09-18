@@ -85,5 +85,6 @@ NAME=$(uname -n)
 LAST=$(uname -n)
 
 check_keystore
+${BASE}/shared/mykeys
 send_keys
 email_keys
