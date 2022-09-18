@@ -31,6 +31,7 @@ then
  cat ${KEYSTORE}/*.pub |sort | uniq
  zip /var/tmp/keys.zip ~/.mykeys/_*.pub
  python3 /zTools/zPrivateConfig/bin/attmail.py
+ rm -f /var/tmp/keys.zip 
 else
  echo "ERROR: keystore not found"
 fi
