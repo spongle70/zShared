@@ -29,7 +29,7 @@ then
  echo "$0: email the below to requestor"
  echo "--------------------------------"
  cat ${KEYSTORE}/*.pub |sort | uniq
- zip /var/tmp/keys.zip ~/._*.pub
+ zip /var/tmp/keys.zip ~/.mykeys/_*.pub
  
 else
  echo "ERROR: keystore not found"
