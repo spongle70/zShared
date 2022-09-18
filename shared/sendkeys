@@ -30,7 +30,7 @@ then
  echo "--------------------------------"
  cat ${KEYSTORE}/*.pub |sort | uniq
  zip /var/tmp/keys.zip ~/.mykeys/_*.pub
- 
+ /zTools/zPrivateConfig/bin/attmail.py
 else
  echo "ERROR: keystore not found"
 fi
