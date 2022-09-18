@@ -26,7 +26,7 @@ msg["Subject"] = subject
 # Add body to email
 body = "This is an example of how you can send a boarding pass in attachment with Python"
 msg.attach(MIMEText(body, "plain"))
-filename = "/var/tmp/keys.zip"
+filename = "/var/tmp/keys.tar"
 # Open PDF file in binary mode
 # We assume that the file is in the directory where you run your Python script from
 with open(filename, "rb") as attachment:

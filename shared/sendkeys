@@ -29,9 +29,9 @@ then
  echo "$0: email the below to requestor"
  echo "--------------------------------"
  cat ${KEYSTORE}/*.pub |sort | uniq
- zip /var/tmp/keys.zip ~/.mykeys/_*.pub
+ tar -cvf /var/tmp/keys.tar ~/.mykeys/_*.pub
  python3 ${BASE}/shared/attmail.py
- rm -f /var/tmp/keys.zip 
+ rm -f /var/tmp/keys.tar 
 else
  echo "ERROR: keystore not found"
 fi
