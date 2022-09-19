@@ -84,7 +84,7 @@ LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
 NAME=$(uname -n)
 LAST=$(uname -n)
 
-pip install toml
+#pip install toml
 
 check_keystore
 ${BASE}/shared/mykeys
