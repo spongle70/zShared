@@ -71,7 +71,9 @@ fi
 #   fi
 # fi
 
+SECRETS=${BASE}
 echo "SECRETS=${BASE}"
+
 if [ -f ${SECRETS}/secrets/.${MYNAME} ]
 then
   . ${SECRETS}/secrets/.${MYNAME}
