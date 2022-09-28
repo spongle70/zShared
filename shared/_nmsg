@@ -36,10 +36,10 @@ then
 	BASE=/static
 fi
 
-if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
-then
-	BASE=/zTools/zShared
-fi
+# if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
+# then
+# 	BASE=/zTools/zShared
+# fi
 
 if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
 then
@@ -71,7 +71,7 @@ fi
 #   fi
 # fi
 
-echo "SECRETS=/zTools/zPrivateConfig"
+echo "SECRETS=${BASE}"
 if [ -f ${SECRETS}/secrets/.${MYNAME} ]
 then
   . ${SECRETS}/secrets/.${MYNAME}
