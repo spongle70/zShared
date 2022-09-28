@@ -52,14 +52,33 @@ then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
-echo "BASE=${BASE}"
-if [ -f ${BASE}/secrets/.${MYNAME} ]
+# echo "BASE=${BASE}"
+# if [ -f ${BASE}/secrets/.${MYNAME} ]
+# then
+#   . ${BASE}/secrets/.${MYNAME}
+# else
+# if [ -f ${BASE}/secrets/.ntfyenv ]
+# then
+#   . ${BASE}/secrets/.ntfyenv
+# else
+#   if [ -z ${DUFUS+x} ]
+#   then
+#     mkdir -p ${BASE}/secrets
+#       echo "Creat ${BASE}/secrets/.ntfyenv"
+#     echo "Please update contents and rerun"
+#     exit 1
+#     fi
+#   fi
+# fi
+
+echo "SECRETS=/zTools/zPrivateConfig"
+if [ -f ${SECRETS}/secrets/.${MYNAME} ]
 then
-  . ${BASE}/secrets/.${MYNAME}
+  . ${SECRETS}/secrets/.${MYNAME}
 else
-if [ -f ${BASE}/secrets/.ntfyenv ]
+if [ -f ${SECRETS}/secrets/.ntfyenv ]
 then
-  . ${BASE}/secrets/.ntfyenv
+  . ${SECRETS}/secrets/.ntfyenv
 else
   if [ -z ${DUFUS+x} ]
   then
