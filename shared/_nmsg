@@ -34,6 +34,8 @@ fi
 if [  -d /static ] && [ ! -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
 then
 	BASE=/static
+else
+	BASE=/zTools/zPrivateConfig
 fi
 
 # if [ ! -d /static ] && [ -d /zTools/zShared ] && [ ! -d /zTools/zPrivateConfig ]
@@ -41,10 +43,11 @@ fi
 # 	BASE=/zTools/zShared
 # fi
 
-if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
-then
-	BASE=/zTools/zPrivateConfig
-fi
+# if [ ! -d /static ] && [ ! -d /zTools/zShared ] && [ -d /zTools/zPrivateConfig ]
+# then
+# 	BASE=/zTools/zPrivateConfig
+# fi
+
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
