@@ -15,12 +15,18 @@ send_ip () {
 }
 
 main() {
+  MYNAME=$(uname -n)
   echo "--------------Starting $0 -------------------------"
   if [ -d /static/shared ]
   then
     ZSHARED=/static
   else
-    ZSHARED=/zTools/zShared
+    if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared  ]
+    then
+      ZSHARED=/volume12/zTools/Sync${MYNAME}/zTools/zShared
+    else
+      ZSHARED=/zTools/zShared
+    fi
   fi
 
   . ${ZSHARED}/shared/myshared
