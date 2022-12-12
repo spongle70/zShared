@@ -1,0 +1,47 @@
+#!/bin/sh
+
+if [ ! -d /zTools/zPrivateConfig ] && [ -d /static ]
+then
+	BASE=/static
+fi
+
+if [ -d /zTools/zPrivateConfig ] && [ ! -d /static ] 
+then
+	BASE=/zTools/zPrivateConfig
+fi
+
+if [ -d /zTools/zShared ]
+then
+	BASE=/zTools/zShared
+fi
+
+if [ -d /volume12/zTools/SyncMINT66?/zTools/zShared ]
+then
+	BASE=/volume12/zTools/SyncMINT66?/zTools/zShared
+fi
+# if [ -f ${BASE}/secrets/.telegramenv ]
+# then
+#   . ${BASE}/secrets/.telegramenv
+# else
+#   echo "Created ${BASE}/secrets/.telegramenv"
+#   echo "Please update contents and rerun"
+#   echo "DUFUS="" " > ${BASE}/secrets/.telegramenv
+#   echo "TCHATID="" " >> ${BASE}/secrets/.telegramenv
+#   exit 1
+# fi
+
+# SCRIPT=$1
+# MSG=$2
+# MYNAME=`uname -n`
+
+# SUBJECT=" ${MYNAME} - ${SCRIPT}: "
+
+# DROP='{"chat_id": "'"${TCHATID}"'", "text": " '"${SUBJECT}"' '"${MSG}"'"}'
+# curl -X POST \
+#      -H 'content-type: application/json' \
+#      -d "${DROP}" \
+#      https://api.telegram.org/bot${DUFUS}/sendmessage
+
+# rm -f ${MSG}
+
+${BASE}/shared/_nmsg $1 $2
