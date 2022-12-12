@@ -44,4 +44,4 @@ fi
 
 # rm -f ${MSG}
 
-${BASE}/shared/_nmsg $1 $2
+${BASE}/shared/_nmsgH $1 $2
