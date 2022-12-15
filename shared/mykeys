@@ -100,11 +100,11 @@ NAME=$(uname -n)
 LAST=$(uname -n)
 
 check_keystore
-check_bastionkey
+# check_bastionkey
 
-check_gitkey
-check_rsynckey
-check_vibblerkey
+# check_gitkey
+# check_rsynckey
+# check_vibblerkey
 
 
 MACHINENAME=$(uname -n)
@@ -112,12 +112,20 @@ PREFIX=_1
 ID=$(id -u)
 
 # for github
-KEYNAME=gitkey
+KEYNAME=github
 KEYNAME_SHORT=${PREFIX}gh${ID}
+check_key
+
+KEYNAME=githubdeploy
+KEYNAME_SHORT=${PREFIX}ghdeploy${ID}
 check_key
 
 KEYNAME=gitea
 KEYNAME_SHORT=${PREFIX}gt${ID}
+check_key
+
+KEYNAME=giteadeploy
+KEYNAME_SHORT=${PREFIX}gtdeploy${ID}
 check_key
 
 KEYNAME=bastion
