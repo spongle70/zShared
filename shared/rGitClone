@@ -5,7 +5,7 @@ echo "SCRIPT $0 starting"
 MYNAME=`uname -n`
 
 ZPC=/zz
-REPO='zPublicConfig zShared'
+REPO='zPublic zPublicConfig zShared'
 
 
 if [ ! -d ${ZPC} ]
