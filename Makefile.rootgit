@@ -10,11 +10,15 @@ help: ## Show this help
 mark-complete:
 	-touch /var/tmp/Makefile.rootgit
 
-setup-dirs:
+initial-setup:
+	-(./shared/rGitClone)
+	-(./shared/rGitPull)
+
+update:
 	-(./shared/rGitClone)
 	-(./shared/rGitPull)
 
 
 
 #####
-load-all: setup-dirs mark-complete
+load-all: mark-complete
