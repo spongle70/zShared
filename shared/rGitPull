@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+echo "SCRIPT $0 starting"
+
+MYNAME=`uname -n`
+
+ZPC=/zz
+REPO='zPublicConfig zShared'
+
+
+if [ -d ${ZPC} ]
+then
+    for i in `ls -d ${ZPC}/z*`
+    do
+        echo $i
+        (cd $i; git pull)
+    done
+fi
+exit 0
