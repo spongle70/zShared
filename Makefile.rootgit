@@ -10,7 +10,7 @@ help: ## Show this help
 mark-complete:
 	-touch /var/tmp/Makefile.rootgit
 
-initial-setup:
+setup:
 	-(./shared/rGitClone)
 	-(./shared/rGitPull)
 
