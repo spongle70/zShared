@@ -8,7 +8,7 @@ help: ## Show this help
 
 #####
 mark-complete:
-	-touch /var/tmp/Makefile.rootcpull
+	-touch /var/tmp/Makefile.rootgit
 
 setup-dirs:
 	-(./shared/rGitClone)
