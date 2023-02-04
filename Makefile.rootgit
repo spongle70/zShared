@@ -15,8 +15,8 @@ initial-setup:
 	-(./shared/rGitPull)
 
 update:
-	-(./shared/rGitClone)
-	-(./shared/rGitPull)
+	-(${ZPC}/zShared/shared/rGitClone)
+	-(${ZPC}/zShared/shared/rGitPull)
 
 
 
