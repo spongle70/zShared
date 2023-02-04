@@ -11,8 +11,8 @@ mark-complete:
 	-touch /var/tmp/Makefile.rootcpull
 
 setup-dirs:
-	-(/zz/zzShare/share/rGitClone)
-	-(/zz/zzShare/share/rGitPull)
+	-(./shared/rGitClone)
+	-(./shared/rGitPull)
 
 
 
