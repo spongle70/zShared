@@ -120,12 +120,20 @@ KEYNAME=githubdeploy
 KEYNAME_SHORT=${PREFIX}ghdeploy${ID}
 check_key
 
+KEYNAME=githubwrite
+KEYNAME_SHORT=${PREFIX}gh${ID}
+check_key
+
 KEYNAME=gitea
 KEYNAME_SHORT=${PREFIX}gt${ID}
 check_key
 
 KEYNAME=giteadeploy
 KEYNAME_SHORT=${PREFIX}gtdeploy${ID}
+check_key
+
+KEYNAME=giteawrite
+KEYNAME_SHORT=${PREFIX}gt${ID}
 check_key
 
 KEYNAME=bastion
