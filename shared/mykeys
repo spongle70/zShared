@@ -121,7 +121,7 @@ KEYNAME_SHORT=${PREFIX}ghdeploy${ID}
 check_key
 
 KEYNAME=githubwrite
-KEYNAME_SHORT=${PREFIX}gh${ID}
+KEYNAME_SHORT=${PREFIX}ghwrite${ID}
 check_key
 
 KEYNAME=gitea
@@ -133,7 +133,7 @@ KEYNAME_SHORT=${PREFIX}gtdeploy${ID}
 check_key
 
 KEYNAME=giteawrite
-KEYNAME_SHORT=${PREFIX}gt${ID}
+KEYNAME_SHORT=${PREFIX}gtwrite${ID}
 check_key
 
 KEYNAME=bastion
