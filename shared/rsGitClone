@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+echo "SCRIPT $0 starting"
+
+MYNAME=`uname -n`
+
+ZPC=/zz
+REPO='zPublic zPublicConfig zShared'
+
+
+if [ ! -d ${ZPC} ]
+then
+    mkdir ${ZPC}
+fi
+
+for i in ${REPO}
+do
+    echo $i
+    if [ ! -d ${ZPC}/$i ]
+    then
+        cd ${ZPC}
+        git clone https://github.com/spongle70/${i}.git
+    fi
+done
