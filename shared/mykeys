@@ -68,10 +68,16 @@ then
 	BASE=/zTools/zShared
 fi
 
-if [ ! -d /zTools/zShared/shared ] && [ -d /static ]
+if [ -d /zz/zShared/shared ] && [ ! -d /static ] 
+then
+	BASE=/zz/zShared
+fi
+
+if [ ! -d /zz/zShared/shared ] && [ ! -d /zTools/zShared/shared ] && [ -d /static ]
 then
 	BASE=/static
 fi
+
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
