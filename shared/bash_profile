@@ -8,6 +8,15 @@ if [[ $- != *i* ]] ; then
 fi
 
 
+
+# History control
+# don't use duplicate lines or lines starting with space
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+# append to the history file instead of overwrite
+shopt -s histappend
+
 _setpath() {
   for i in /usr/local/bin /usr/local/sbin /usr/local/sqlite/bin
   do
