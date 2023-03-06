@@ -6,14 +6,17 @@ MYNAME=`uname -n`
 
 ZPC=/zz
 REPO='zPublic zPublicConfig zShared'
+KEYS=
 
-
-if [ -d ${ZPC} ]
-then
-    for i in `ls -d ${ZPC}/z*`
-    do
+for i in ${REPO}
+do
+    echo $i
+    if [ -d ${ZPC}/$i ]
+    then
         echo $i
+        cd ${ZPC}
         (cd $i; git pull)
-    done
-fi
+    fi
+done
+
 exit 0
