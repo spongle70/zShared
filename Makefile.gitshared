@@ -11,8 +11,8 @@ mark-complete:
 	-touch /var/tmp/${MAKEFILE_NAME}
 
 setup:
-	-(./sbin/GitCloneShared)
-	-(./sbin/GitPullShared)
+	-(./sbin/GitClonePublic)
+	-(./sbin/GitPullPublic)
 	
 transition:
 	-(/zTools/zPrivateConfig/rGitClone)
@@ -29,8 +29,8 @@ update-config: ## update global git config and ignores
 	-(git config --global core.sshCommand "ssh -i ~/.mykeys/giteawrite -F /dev/null")
 
 update:
-	-(${ZPC}/zShared/sbin/GitCloneShared)
-	-(${ZPC}/zShared/sbin/GitPullShared)
+	-(${ZPC}/zShared/sbin/GitClonePublic)
+	-(${ZPC}/zShared/sbin/GitPullPublic)
 
 #####
 load-all: update-config mark-complete
