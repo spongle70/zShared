@@ -1,0 +1,36 @@
+SHELL := /bin/sh
+ZPC = /zz
+MAKEFILE_NAME := $(firstword $(MAKEFILE_LIST))
+
+.PHONY: help
+help: ## Show this help
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+#####
+mark-complete:
+	-touch /var/tmp/${MAKEFILE_NAME}
+
+setup:
+	-(./sbin/GitCloneShared)
+	-(./sbin/GitPullShared)
+	
+transition:
+	-(/zTools/zPrivateConfig/rGitClone)
+	-(/zTools/zPrivateConfig/rGitPull)
+	-(/zTools/zPrivateConfig/rpGitClone)
+	-(/zTools/zPrivateConfig/rpGitPull)
+
+update-config: ## update global git config and ignores
+	-(cat ${ZPC}/zPrivate/gitignore/*.gitignore > ~/.gitignoreMaster)
+	-(git config --global core.excludesfile ~/.gitignoreMaster)
+	-(git config --global user.name "USER")
+	-(git config --global user.email "USER@DOMAIN.com")
+	-(git config --global init.defaultBranch main)
+	-(git config --global core.sshCommand "ssh -i ~/.mykeys/giteawrite -F /dev/null")
+
+update:
+	-(${ZPC}/zShared/sbin/GitCloneShared)
+	-(${ZPC}/zShared/sbin/GitPullShared)
+
+#####
+load-all: update-config mark-complete
