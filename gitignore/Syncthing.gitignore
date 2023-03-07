@@ -1,0 +1,4 @@
+# Syncthing caches
+.stversions
+.stignore
+.stfolder

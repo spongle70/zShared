@@ -21,7 +21,7 @@ transition:
 	-(/zTools/zPrivateConfig/rpGitPull)
 
 update-config: ## update global git config and ignores
-	-(cat ${ZPC}/zPrivate/gitignore/*.gitignore > ~/.gitignoreMaster)
+	-(cat ${ZPC}/zShared/gitignore/*.gitignore > ~/.gitignoreMaster)
 	-(git config --global core.excludesfile ~/.gitignoreMaster)
 	-(git config --global user.name "USER")
 	-(git config --global user.email "USER@DOMAIN.com")
