@@ -50,9 +50,9 @@ fi
 
 
 MYNAME=$(uname -n)
-if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zPrivateConfig ]
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zSyno ]
 then
-	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zPrivateConfig
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zSyno
 fi
 
 # echo "BASE=${BASE}"

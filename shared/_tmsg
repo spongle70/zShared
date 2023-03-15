@@ -32,9 +32,9 @@ then
 fi
 
 MYNAME=$(uname -n)
-if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zSyno ]
 then
-	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zSyno
 fi
 
 if [ -f ${BASE}/secrets/.telegramenv ]
