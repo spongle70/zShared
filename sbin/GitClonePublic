@@ -13,6 +13,7 @@ then
     mkdir ${ZPC}
 fi
 
+REPO=https://mint.nopenso.com/mirror
 for i in ${REPO}
 do
     echo $i
@@ -20,6 +21,6 @@ do
     then
         echo $i
         cd ${ZPC}
-        git clone https://github.com/spongle70/${i}.git
+        git clone ${REPO}/${i}.git
     fi
 done

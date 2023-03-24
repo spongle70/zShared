@@ -18,14 +18,12 @@ get_public_bastion () {
   chmod 644 ${AUTHFILE}
 
   cd /tmp
-  rm -rf /tmp/z*
+  rm -rf /tmp/zKeys*
 
-  REPO=https://mint.nopenso.com/mirror
-
-  curl -LJO  ${REPO}/zKeys/archive/main.zip
+  curl -LJO  https://github.com/spongle70/zKeys/archive/refs/heads/main.zip
   unzip zKeys*.zip
 
-  cd zkeys
+  cd zKeys-main
   echo "Save keys from github"
   if [ "${SERVER_TYPE}" == "master" ]
   then
@@ -49,7 +47,7 @@ get_public_bastion () {
 
   echo "The approved keys are:"
   cat ${AUTHFILE}
-  rm -rf ./z*
+  rm -rf ./zKeys*
   echo "${SERVER_TYPE}: finished $0"
 }
 
