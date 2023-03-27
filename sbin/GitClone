@@ -5,7 +5,10 @@ echo "SCRIPT $0 starting"
 MYNAME=`uname -n`
 
 ZZ=/zz
-REPO=
+MYNAME=`uname -n`
+
+source ${ZZ}/zSyno/secrets/.${MYNAME}
+REPO=${REPOSYNO}
 KEYS=
 
 if [ ! -d ${ZPC} ]
