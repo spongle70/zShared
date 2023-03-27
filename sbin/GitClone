@@ -16,7 +16,7 @@ then
     mkdir ${ZPC}
 fi
 
-REPOSITE=https://mint.nopenso.com/mirror
+REPOSITE=${REPO_SITE}
 
 for i in ${REPO}
 do

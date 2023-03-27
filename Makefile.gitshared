@@ -10,26 +10,8 @@ help: ## Show this help
 mark-complete:
 	-touch /var/tmp/${MAKEFILE_NAME}
 
-setup:
-	-(./sbin/GitClonePublic)
-	-(./sbin/GitPullPublic)
-	
-transition:
-	-(/zTools/zPrivateConfig/rGitClone)
-	-(/zTools/zPrivateConfig/rGitPull)
-	-(/zTools/zPrivateConfig/rpGitClone)
-	-(/zTools/zPrivateConfig/rpGitPull)
-
-update-config: ## update global git config and ignores
-	-(cat ${ZPC}/zShared/gitignore/*.gitignore > ~/.gitignoreMaster)
-	-(git config --global core.excludesfile ~/.gitignoreMaster)
-	-(git config --global user.name "USER")
-	-(git config --global user.email "USER@DOMAIN.com")
-	-(git config --global init.defaultBranch main)
-	-(git config --global core.sshCommand "ssh -i ~/.mykeys/giteawrite -F /dev/null")
-
 update:
-	-(${ZPC}/zShared/sbin/GitClonePublic)
+	-(${ZPC}/zShared/sbin/GitClone)
 	-(${ZPC}/zShared/sbin/GitPull)
 
 #####
