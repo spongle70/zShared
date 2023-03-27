@@ -8,7 +8,7 @@ ZZ=/zz
 MYNAME=`uname -n`
 
 source ${ZZ}/zSyno/secrets/.${MYNAME}
-REPO=${REPOSYNO}
+REPO=${REPO_SYNO}
 KEYS=
 
 if [ ! -d ${ZPC} ]
