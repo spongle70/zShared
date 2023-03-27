@@ -30,7 +30,7 @@ update-config: ## update global git config and ignores
 
 update:
 	-(${ZPC}/zShared/sbin/GitClonePublic)
-	-(${ZPC}/zShared/sbin/GitPullPublic)
+	-(${ZPC}/zShared/sbin/GitPull)
 
 #####
 load-all: update-config mark-complete

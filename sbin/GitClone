@@ -4,7 +4,7 @@ echo "SCRIPT $0 starting"
 
 MYNAME=`uname -n`
 
-ZPC=/zz
+ZZ=/zz
 REPO='zPublic zShared'
 KEYS=
 
@@ -13,15 +13,17 @@ then
     mkdir ${ZPC}
 fi
 
-REPOG=https://mint.nopenso.com/mirror
+REPOSITE=https://mint.nopenso.com/mirror
 
-for i in ${REPO}
+for i in `ls ${ZZ}`
 do
     echo $i
     if [ ! -d ${ZPC}/$i ]
     then
         echo $i
         cd ${ZPC}
-        git clone ${REPOG}/${i}.git
+        git clone ${REPOSITE}/${i}.git
     fi
 done
+
+exit 0
