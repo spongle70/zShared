@@ -8,15 +8,15 @@ ZZ=/zz
 MYNAME=`uname -n`
 
 source ${ZZ}/zSyno/secrets/.${MYNAME}
-REPO=${REPO_SYNO}
-KEYS=
 
-if [ ! -d ${ZPC} ]
+REPOSITE=${PUBLIC_SITE}
+REPO=${PUBLIC_REPO}
+KEYS=${PUBLIC_KEYS}
+
+if [ ! -d ${ZZ} ]
 then
-    mkdir ${ZPC}
+    mkdir ${ZZ}
 fi
-
-REPOSITE=${REPO_SITE}
 
 for i in ${REPO}
 do
@@ -26,6 +26,7 @@ do
         echo $i
         cd ${ZZ}
         git clone ${REPOSITE}/${i}.git
+#        GIT_SSH_COMMAND="ssh -o 'StrictHostKeyChecking no' -i ${KEYS}" git clone ${REPOSITE}/${i}.git
     fi
 done
 
