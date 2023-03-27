@@ -37,6 +37,11 @@ then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zSyno
 fi
 
+if [  -d /zz ]
+then
+	BASE=/zz
+fi
+
 echo "BASE=${BASE}"
 if [ -f ${BASE}/secrets/.${MYNAME} ]
 then
