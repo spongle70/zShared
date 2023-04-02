@@ -39,27 +39,27 @@ fi
 
 if [  -d /zz/zPrivate/secrets ]
 then
-	BASE=/zz/zPrivate
+	SECRETS=/zz/zPrivate
 fi
 
 if [  -d /zz/zSyno/secrets ]
 then
-	BASE=/zz/zSyno
+	SECRETS=/zz/zSyno
 fi
 
-echo "BASE=${BASE}"
-if [ -f ${BASE}/secrets/.${MYNAME} ]
+echo "SECRETS=${SECRETS}"
+if [ -f ${SECRETS}/secrets/.${MYNAME} ]
 then
-  . ${BASE}/secrets/.${MYNAME}
+  . ${SECRETS}/secrets/.${MYNAME}
 else
-if [ -f ${BASE}/secrets/.ntfyenvH ]
+if [ -f ${SECRETS}/secrets/.ntfyenvH ]
 then
-  . ${BASE}/secrets/.ntfyenvH
+  . ${SECRETS}/secrets/.ntfyenvH
 else
   if [ -z ${DUFUS+x} ]
   then
-    mkdir -p ${BASE}/secrets
-      echo "Create ${BASE}/secrets/.ntfyenvH"
+    mkdir -p ${SECRETS}/secrets
+      echo "Create ${SECRETS}/secrets/.ntfyenv"
     echo "Please update contents and rerun"
     exit 1
     fi

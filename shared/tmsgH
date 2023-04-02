@@ -22,15 +22,15 @@ then
 fi
 
 
-if [  -d /zz/zPrivate/secrets ]
-then
-	BASE=/zz/zPrivate
-fi
+# if [  -d /zz/zPrivate/secrets ]
+# then
+# 	BASE=/zz/zPrivate
+# fi
 
-if [  -d /zz/zSyno/secrets ]
-then
-	BASE=/zz/zSyno
-fi
+# if [  -d /zz/zSyno/secrets ]
+# then
+# 	BASE=/zz/zSyno
+# fi
 
 # if [ -f ${BASE}/secrets/.telegramenv ]
 # then

@@ -21,13 +21,13 @@ then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
 fi
 
-if [  -d /zz/zPrivate/secrets ]
-then
-	BASE=/zz/zPrivate
-fi
+# if [  -d /zz/zPrivate/secrets ]
+# then
+# 	BASE=/zz/zPrivate
+# fi
 
-if [  -d /zz/zSyno/secrets ]
-then
-	BASE=/zz/zSyno
-fi
+# if [  -d /zz/zSyno/secrets ]
+# then
+# 	BASE=/zz/zSyno
+# fi
 ${BASE}/shared/_nmsg $1 $2
