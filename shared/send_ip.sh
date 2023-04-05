@@ -21,11 +21,9 @@ main() {
   then
     ZSHARED=/static
   else
-    if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared  ]
+    if [ -d /zz/zShared  ]
     then
-      ZSHARED=/volume12/zTools/Sync${MYNAME}/zTools/zShared
-    else
-      ZSHARED=/zTools/zShared
+      ZSHARED=/zz/zShared
     fi
   fi
 
