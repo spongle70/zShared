@@ -7,9 +7,9 @@ MYNAME=`uname -n`
 ZZ=/zz
 MYNAME=`uname -n`
 
-if [ -f ${ZZ}/zShared/secrets/.${MYNAME} ]
+if [ -f ${ZZ}/zSyno/secrets/.${MYNAME} ]
 then
-    . ${ZZ}/zShared/secrets/.${MYNAME}
+    . ${ZZ}/zSyno/secrets/.${MYNAME}
 fi
 
 REPOSITE=${PUBLIC_SITE}
