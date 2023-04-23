@@ -7,7 +7,7 @@ MYNAME=`uname -n`
 ZZ=/zz
 MYNAME=`uname -n`
 
-source ${ZZ}/zSyno/secrets/.${MYNAME}
+. ${ZZ}/zSyno/secrets/.${MYNAME}
 
 REPOSITE=${PUBLIC_SITE}
 REPO=${PUBLIC_REPO}
