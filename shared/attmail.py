@@ -6,7 +6,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-with open('/zTools/zPrivateConfig/secrets/config.toml') as f:
+with open('/zz/zPrivate/secrets/config.toml') as f:
     config = toml.load(f)
 
 port = config['attmail']['port'] 
