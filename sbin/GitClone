@@ -7,7 +7,10 @@ MYNAME=`uname -n`
 ZZ=/zz
 MYNAME=`uname -n`
 
-. ${ZZ}/zSyno/secrets/.${MYNAME}
+if [ -f ${ZZ}/zSyno/secrets/.${MYNAME} ]
+then
+    . ${ZZ}/zSyno/secrets/.${MYNAME}
+fi
 
 REPOSITE=${PUBLIC_SITE}
 REPO=${PUBLIC_REPO}

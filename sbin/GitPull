@@ -8,12 +8,10 @@ ZZ=/zz
 REPO=
 KEYS=
 
-if [ ! -d ${ZPC} ]
-then
-    mkdir ${ZPC}
-fi
-
-REPOSITE=https://mint.nopenso.com/mirror
+# if [ ! -d ${ZPC} ]
+# then
+#     mkdir ${ZPC}
+# fi
 
 for i in `ls ${ZZ}`
 do
