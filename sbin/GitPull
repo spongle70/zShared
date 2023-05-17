@@ -13,7 +13,7 @@ KEYS=
 #     mkdir ${ZPC}
 # fi
 
-for i in `ls ${ZZ}`
+for i in `ls ${ZZ}/z*`
 do
     echo $i
     if [ -d ${ZZ}/$i ]
