@@ -15,4 +15,4 @@ update:
 	-(${ZPC}/zShared/sbin/GitPull)
 
 #####
-load-all: update-config mark-complete
+load-all: update mark-complete
