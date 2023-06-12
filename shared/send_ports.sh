@@ -6,13 +6,12 @@ send_ports () {
   . /etc/os-release
   if [ ${ID} = "alpine" ]
   then
-    netstat -tulnp > /var/tmp/crap.$$
+	  NPORTS=$(netstat -tulnp| awk '{ print $4 }'| awk -F0: '{ print $2 }'| sort -u | tr '\n' ' ')
   else
-    ss -tulnp > /var/tmp/crap.$$
+	  NPORTS=$(ss -tulnp| awk '{ print $5 }'| awk -F0: '{ print $2 }'| sort -u | tr '\n' ' ')
   fi
-  mv /var/tmp/crap.$$ /var/tmp/ports.txt
-  ${ZSHARED}/shared/tfile `uname -n` ports /var/tmp/ports.txt
-  rm -f /var/tmp/crap.$$ /var/tmp/ports.txt
+  nn=""$NPORTS""
+  ${ZSHARED}/shared/tmsg `uname -n` ${nn}
   echo "${SERVER_TYPE}: finished $0"
 }
 
