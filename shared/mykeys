@@ -142,9 +142,9 @@ KEYNAME=giteadeploy
 KEYNAME_SHORT=${PREFIX}gtdeploy${ID}
 check_key
 
-KEYNAME=giteawrite
-KEYNAME_SHORT=${PREFIX}gtwrite${ID}
-check_key
+# KEYNAME=giteawrite
+# KEYNAME_SHORT=${PREFIX}gtwrite${ID}
+# check_key
 
 KEYNAME=bastion
 KEYNAME_SHORT=${PREFIX}$(echo $KEYNAME|cut -c1-2)${ID}
