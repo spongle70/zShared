@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+echo "SCRIPT $0 starting"
+
+pull_repo () {
+    if [ ! -d ${ZZ} ]
+    then
+        mkdir ${ZZ}
+    fi
+
+    for i in ${REPO}
+    do
+        echo $i
+        if [ ! -d ${ZZ}/$i ]
+        then
+            echo $i
+            cd ${ZZ}
+            git clone ${REPOSITE}/${i}.git
+    #        GIT_SSH_COMMAND="ssh -o 'StrictHostKeyChecking no' -i ${KEYS}" git clone ${REPOSITE}/${i}.git
+        fi
+    done
+}
+
+ZZ=XXXXXXXXXXX
+if [ ! -d ${ZZ} ]
+then
+    mkdir -p ${ZZ}/private
+    mkdir -p ${ZZ}/public
+fi
+
+PRIVATE_SITE=XXXXXXXXXXXXX
+PRIVATE_KEYS=
+PRIVATE='XXX XXXX'
+PUBLIC='XXX XXXX'
+
+
+REPOSITE=${PRIVATE}
+REPO=${PRIVATE_REPO}
+KEYS=${PRIVATE_KEYS}
+
+pull_repo
+
+REPO=${PUBLIC}
+pull_repo
+
+
+exit 0
