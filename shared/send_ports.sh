@@ -6,7 +6,7 @@ send_ports () {
   . /etc/os-release
   if [ ${ID} = "alpine" ]
   then
-	  NPORTS=$(netstat -tulnp| awk '{ print $4 }'| awk -F0: '{ print $2 }'| sort -u | tr '\n' ' ')
+	  NPORTS=$(netstat -tulnp| awk '{ print $4 }'| awk -F0: '{ print $2 }'| sort -u | tr '\n' ',')
   else
 	  NPORTS=$(ss -tulnp| awk '{ print $5 }'| awk -F0: '{ print $2 }'| sort -u | tr '\n' ' ')
   fi
