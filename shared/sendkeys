@@ -49,20 +49,22 @@ RSYNCKEY=${KEYSTORE}/rsynckey
 VIBBLERKEY=${KEYSTORE}/vibblerkey
 
 
-if [ -d /zTools/zShared/shared ] && [ ! -d /static ] 
+if [ -d /zz/zShared/shared ] && [ ! -d /static ] 
 then
-	BASE=/zTools/zShared
+	BASE=/zz/zShared
 fi
 
-if [ ! -d /zTools/zShared/shared ] && [ -d /static ]
+if [ ! -d /zz/zShared/shared ] && [ -d /static ]
 then
 	BASE=/static
+  echo ${BASE}
 fi
 
 MYNAME=$(uname -n)
 if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
 then
 	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
+  echo ${BASE}
 fi
 
 if [ -z ${BASE+x} ]
