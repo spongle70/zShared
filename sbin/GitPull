@@ -19,7 +19,7 @@ do
     if [ -d ${ZZ}/$i ]
     then
         echo $i
-        (cd ${ZZ}/$i; git pull)
+        (cd ${ZZ}/$i; git pull; git checkout main ; git pull ;)
     fi
 done
 
