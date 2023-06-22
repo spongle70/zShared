@@ -1,0 +1,18 @@
+SHELL := /bin/sh
+ZPC = /zz
+MAKEFILE_NAME := $(firstword $(MAKEFILE_LIST))
+
+.PHONY: help
+help: ## Show this help
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+#####
+mark-complete:
+	-touch /var/tmp/${MAKEFILE_NAME}
+
+update:
+	-(${ZPC}/zShared/sbin/GitClone)
+	-(${ZPC}/zShared/sbin/GitPull)
+
+#####
+load-all: update mark-complete
