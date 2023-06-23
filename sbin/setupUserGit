@@ -2,46 +2,48 @@
 #
 echo "SCRIPT $0 starting"
 
-pull_repo () {
-    if [ ! -d ${ZZ} ]
+clone_repo () {
+    if [ ! -d ${DIR} ]
     then
-        mkdir ${ZZ}
+        mkdir -p ${DIR}
     fi
 
     for i in ${REPO}
     do
         echo $i
-        if [ ! -d ${ZZ}/$i ]
+        if [ ! -d ${DIR}/$i ]
         then
             echo $i
-            cd ${ZZ}
+            cd ${DIR}
             git clone ${REPOSITE}/${i}.git
     #        GIT_SSH_COMMAND="ssh -o 'StrictHostKeyChecking no' -i ${KEYS}" git clone ${REPOSITE}/${i}.git
         fi
     done
 }
 
-ZZ=XXXXXXXXXXX
+ZZ=~/XXXXXX
 if [ ! -d ${ZZ} ]
 then
     mkdir -p ${ZZ}/private
     mkdir -p ${ZZ}/public
 fi
 
-PRIVATE_SITE=XXXXXXXXXXXXX
-PRIVATE_KEYS=
-PRIVATE='XXX XXXX'
-PUBLIC='XXX XXXX'
+PRIVATE_SITE=ssh://git@x.y.com:PORT/USER
+PRIVATE_KEYS=~/YYY
+PRIVATE="x  y  x"
+PUBLIC="x y z"
 
 
-REPOSITE=${PRIVATE}
+REPOSITE=${PRIVATE_SITE}
 REPO=${PRIVATE_REPO}
 KEYS=${PRIVATE_KEYS}
 
-pull_repo
+DIR=${ZZ}/private
+clone_repo
 
 REPO=${PUBLIC}
-pull_repo
+DIR=${ZZ}/public
+clone_repo
 
 
 exit 0
