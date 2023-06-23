@@ -1,5 +1,5 @@
 SHELL := /bin/sh
-ZPC = /zz
+ZZ = /zz
 MAKEFILE := $(firstword $(MAKEFILE_LIST))
 MAKEFILE_NAME := $$(basename ${MAKEFILE})
 
@@ -12,8 +12,8 @@ mark-complete:
 	-touch /var/tmp/${MAKEFILE_NAME}
 
 update:
-	-(${ZPC}/zShared/sbin/GitClone)
-	-(${ZPC}/zShared/sbin/GitPull)
+	-(${ZZ}/zShared/sbin/GitClone)
+	-(${ZZ}/zShared/sbin/GitPull)
 
 #####
 load-all: update mark-complete
