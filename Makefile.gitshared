@@ -1,6 +1,7 @@
 SHELL := /bin/sh
 ZPC = /zz
-MAKEFILE_NAME := $(firstword $(MAKEFILE_LIST))
+MAKEFILE := $(firstword $(MAKEFILE_LIST))
+MAKEFILE_NAME := $$(basename ${MAKEFILE})
 
 .PHONY: help
 help: ## Show this help
