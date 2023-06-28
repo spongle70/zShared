@@ -11,6 +11,9 @@ send_ip () {
 
   ${ZSHARED}/shared/tmsg `uname -n` ${MSG}
 
+  if [ -z "${SERVER_TYPE}" ]; then 
+    SERVER_TYPE='NOT_SET'
+  fi
   echo "${SERVER_TYPE}: finished $0"
 }
 
