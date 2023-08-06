@@ -29,6 +29,7 @@ get_public_bastion () {
   else
     curl -LJO  ${REPO}/zKeys/archive/main.zip
     unzip zKeys*.zip
+  fi
 
   cd zkeys
   echo "Save keys from github"
