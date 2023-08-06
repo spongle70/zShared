@@ -22,8 +22,13 @@ get_public_bastion () {
 
   REPO=https://mint.nopenso.com/mirror
 
-  curl -LJO  ${REPO}/zKeys/archive/main.zip
-  unzip zKeys*.zip
+  which unzip
+  if [ $? == 1 ]
+    curl -LJO  ${REPO}/zKeys/archive/main.tar.gz
+    tar -zvxf zKeys*.tar.gz
+  else
+    curl -LJO  ${REPO}/zKeys/archive/main.zip
+    unzip zKeys*.zip
 
   cd zkeys
   echo "Save keys from github"
