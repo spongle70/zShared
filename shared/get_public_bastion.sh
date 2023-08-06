@@ -24,6 +24,7 @@ get_public_bastion () {
 
   which unzip
   if [ $? == 1 ]
+  then
     curl -LJO  ${REPO}/zKeys/archive/main.tar.gz
     tar -zvxf zKeys*.tar.gz
   else
