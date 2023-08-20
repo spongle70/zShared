@@ -1,0 +1,95 @@
+#!/bin/sh
+set -e
+
+# Common environment variables
+#
+
+
+check_keystore () {
+if [ ! -d ${KEYSTORE} ]
+then
+ mkdir -p ${KEYSTORE}
+fi
+}
+
+send_keys () {
+if [ -d ${KEYSTORE} ]
+then
+ echo "$0: email the below to requestor"
+ echo "--------------------------------"
+ cat ${KEYSTORE}/*.pub |sort | uniq
+else
+ echo "ERROR: keystore not found"
+fi
+}
+
+email_keys () {
+if [ -d ${KEYSTORE} ]
+then
+ echo "$0: email the below to requestor"
+ echo "--------------------------------"
+ cat ${KEYSTORE}/*.pub |sort | uniq
+ rm -rf /var/tmp/keys.tar
+ tar -cvf /var/tmp/keys.tar ~/.mykeys/_*.pub
+ python3 ${BASE}/shared/synomail.py
+ rm -f /var/tmp/keys.tar 
+else
+ echo "ERROR: keystore not found"
+fi
+}
+
+
+#####
+# Main script below
+#####
+KEYSTORE=~/.mykeys
+BASTIONKEY=${KEYSTORE}/bastionkey
+GITKEY=${KEYSTORE}/gitkey
+RSYNCKEY=${KEYSTORE}/rsynckey
+VIBBLERKEY=${KEYSTORE}/vibblerkey
+
+
+if [ -d /zz/zShared/shared ] && [ ! -d /static ] 
+then
+	BASE=/zz/zShared
+fi
+
+if [ ! -d /zz/zShared/shared ] && [ -d /static ]
+then
+	BASE=/static
+  echo ${BASE}
+fi
+
+MYNAME=$(uname -n)
+if [ -d /volume12/zTools/Sync${MYNAME}/zTools/zShared ]
+then
+	BASE=/volume12/zTools/Sync${MYNAME}/zTools/zShared
+  echo ${BASE}
+fi
+
+if [ -z ${BASE+x} ]
+then
+  echo "Can not find BASE directory"
+  exit 1
+fi
+
+if [ -f ${BASE}/shared/myshared ]
+then
+  . ${BASE}/shared/myshared
+fi
+
+SHARED=${BASE}/shared
+
+. ${SHARED}/myshared
+
+NAME=$(uname -n|cut -c2-4)
+LAST=$(uname -n| sed -e 's/.*\(.$\)/\1/')
+NAME=$(uname -n)
+LAST=$(uname -n)
+
+#pip install toml
+
+check_keystore
+${BASE}/shared/mykeys
+send_keys
+email_keys
