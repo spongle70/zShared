@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import smtplib
 import configparser
 # import the corresponding modules
