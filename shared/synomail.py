@@ -46,7 +46,7 @@ part.add_header(
 msg.attach(part)
 text = msg.as_string()
 # send your email
-with smtplib.SMTP_SSL(smtp_server, port) as server:
+with smtplib.SMTP_SSL(smtp_server_ip, port) as server:
     server.login(login, password)
     server.sendmail(
         sender_email, receiver_email, text
