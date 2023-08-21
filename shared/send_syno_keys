@@ -31,7 +31,7 @@ then
  cat ${KEYSTORE}/*.pub |sort | uniq
  rm -rf /var/tmp/keys.tar
  tar -cvf /var/tmp/keys.tar ~/.mykeys/_*.pub
- python3 ${BASE}/shared/synomail.py
+ python3 /zz/zShared/shared/synomail.py
  rm -f /var/tmp/keys.tar 
 else
  echo "ERROR: keystore not found"
