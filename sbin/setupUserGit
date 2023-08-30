@@ -21,14 +21,20 @@ clone_repo () {
     done
 }
 
-ZZ=/XXXXXX
-GITUSER=YYYY
-DOMAIN=DOMAIN
-PORT=PORT
-PRIVATE_KEYS=~/YYY/qwer.pub
-PRIVATE="x  y  x"
-PUBLIC="x y z"
+MYNAME=`uname -n`
 
+if [ -f /zz/zPrivate/secrets/.${MYNAME}.private ]
+then
+    . /zz/zPrivate/secrets/.${MYNAME}.private
+else
+    ZZ=/XXXXXX
+    GITUSER=YYYY
+    DOMAIN=DOMAIN
+    PORT=PORT
+    PRIVATE_KEYS=~/YYY/qwer.pub
+    PRIVATE="x  y  x"
+    PUBLIC="x y z"
+fi
 
 PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
 
