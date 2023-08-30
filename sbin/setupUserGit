@@ -21,8 +21,8 @@ clone_repo () {
     done
 }
 
-ZZ=~/XXXXXX
-USER=YYYY
+ZZ=/XXXXXX
+GITUSER=YYYY
 DOMAIN=DOMAIN
 PORT=PORT
 PRIVATE_KEYS=~/YYY/qwer.pub
@@ -30,16 +30,17 @@ PRIVATE="x  y  x"
 PUBLIC="x y z"
 
 
-PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${USER}
+PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
 
 
-
-if [ ! -d ${ZZ} ]
+if [ ! $USER == "root" ]
 then
-    mkdir -p ${ZZ}/private
-    mkdir -p ${ZZ}/public
+    if [ ! -d ${ZZ} ]
+    then
+        mkdir -p ${ZZ}/private
+        mkdir -p ${ZZ}/public
+    fi
 fi
-
 
 
 REPOSITE=${PRIVATE_SITE}
