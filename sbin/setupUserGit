@@ -27,7 +27,6 @@ if [ -f /zz/zPrivate/secrets/.${MYNAME}.private ]
 then
     . /zz/zPrivate/secrets/.${MYNAME}.private
 else
-    ZZ=/XXXXXX
     GITUSER=YYYY
     DOMAIN=DOMAIN
     PORT=PORT
@@ -42,11 +41,14 @@ fi
 
 if [ $USER != "root" ]
 then
+    ZZ=~/git
     if [ ! -d ${ZZ} ]
     then
         mkdir -p ${ZZ}/private
         mkdir -p ${ZZ}/public
     fi
+else
+    ZZ=/zz
 fi
 
 
