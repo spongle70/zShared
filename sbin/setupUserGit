@@ -33,7 +33,7 @@ PUBLIC="x y z"
 PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
 
 
-if [ ! $USER == "root" ]
+if [ $USER != "root" ]
 then
     if [ ! -d ${ZZ} ]
     then
@@ -47,11 +47,21 @@ REPOSITE=${PRIVATE_SITE}
 KEYS=${PRIVATE_KEYS}
 
 REPO=${PRIVATE}
-DIR=${ZZ}/private
+if [ $USER != "root" ]
+then
+    DIR=${ZZ}/private
+else
+    DIR=${ZZ}
+fi
 clone_repo
 
 REPO=${PUBLIC}
-DIR=${ZZ}/public
+if [ $USER != "root" ]
+then
+    DIR=${ZZ}/public
+else
+    DIR=${ZZ}
+fi
 clone_repo
 
 
