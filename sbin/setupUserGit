@@ -22,22 +22,30 @@ clone_repo () {
 }
 
 ZZ=~/XXXXXX
+USER=YYYY
+DOMAIN=DOMAIN
+PORT=PORT
+PRIVATE_KEYS=~/YYY/qwer.pub
+PRIVATE="x  y  x"
+PUBLIC="x y z"
+
+
+PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${USER}
+
+
+
 if [ ! -d ${ZZ} ]
 then
     mkdir -p ${ZZ}/private
     mkdir -p ${ZZ}/public
 fi
 
-PRIVATE_SITE=ssh://git@x.y.com:PORT/USER
-PRIVATE_KEYS=~/YYY
-PRIVATE="x  y  x"
-PUBLIC="x y z"
 
 
 REPOSITE=${PRIVATE_SITE}
-REPO=${PRIVATE_REPO}
 KEYS=${PRIVATE_KEYS}
 
+REPO=${PRIVATE}
 DIR=${ZZ}/private
 clone_repo
 
