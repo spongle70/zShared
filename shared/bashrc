@@ -150,28 +150,28 @@ _setaliases() {
 _setlocalaliases() {
   case "$THISHOST" in
     MINT660)
-        alias ansible-playbook='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-playbook'
-        alias ansible-lint='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-lint'
+        alias ansible-playbook='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-playbook'
+        alias ansible-lint='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-lint'
         alias vgit='docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git alpine/git "$@" '
-        alias mycicd='/volume17/zNFS2/Sync${THISHOST}/zNFS2/zDocky/mycicd.sh'
+        alias mycicd='/zz/zDocky/mycicd.sh'
         ;;
     MINT661)
-        alias ansible-playbook='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-playbook'
-        alias ansible-lint='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-lint'
+        alias ansible-playbook='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-playbook'
+        alias ansible-lint='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-lint'
         alias vgit='docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git alpine/git "$@" '
-        alias mycicd='/volume12/zTools/Sync${THISHOST}/zTools/zDocky/mycicd.sh'
+        alias mycicd='/zz/zDocky/mycicd.sh'
         ;;
     MINT662)
-        alias ansible-playbook='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-playbook'
-        alias ansible-lint='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-lint'
+        alias ansible-playbook='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-playbook'
+        alias ansible-lint='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-lint'
         alias vgit='docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git alpine/git "$@" '
-        alias mycicd='/volume12/zTools/Sync${THISHOST}/zTools/zDocky/mycicd.sh'
+        alias mycicd='/zz/zDocky/mycicd.sh'
         ;;
     MINT663)
-        alias ansible-playbook='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-playbook'
-        alias ansible-lint='docker run -it --rm -v /volume12/zTools/Sync${THISHOST}/zTools/zAnsible:/ansible dansible:latest ansible-lint'
+        alias ansible-playbook='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-playbook'
+        alias ansible-lint='docker run -it --rm -v /zz/zAnsible:/ansible ansible:latest ansible-lint'
         alias vgit='docker run -ti --rm -v ${HOME}:/root -v $(pwd):/git alpine/git "$@" '
-        alias mycicd='/volume12/zTools/Sync${THISHOST}/zTools/zDocky/mycicd.sh'
+        alias mycicd='/zz/zDocky/mycicd.sh'
         ;;
   esac
 }
@@ -464,6 +464,7 @@ _sethistory
 _moreless
 _manpagecolor
 
+EDITOR=vi
 export EDITOR=vim
 
 # Correct minor spelling errors in cd commands
@@ -491,5 +492,5 @@ export GPODDER_HOME=~/DocumentsPodcasts/config
 export GPODDER_DOWNLOAD_DIR=~/DocumentsPodcasts/downloads
 
 PATH=${PATH}:.local/bin ; export PATH
-export SIGNAL_PHONE_NUMBER=+447761475272
+export SIGNAL_PHONE_NUMBER=
 
