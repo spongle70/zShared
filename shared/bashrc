@@ -464,8 +464,7 @@ _sethistory
 _moreless
 _manpagecolor
 
-EDITOR=vi
-export EDITOR=vim
+export EDITOR=vi
 
 # Correct minor spelling errors in cd commands
 shopt -s cdspell
