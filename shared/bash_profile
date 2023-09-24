@@ -1,3 +1,8 @@
+if [ -f /zz/zShared/shared/bashrc ]
+then
+    source /zz/zShared/shared/bashrc
+fi
+
 if [ -f /zz/zPrivate/secrets/bashrc ]
 then
     source /zz/zPrivate/secrets/bashrc
