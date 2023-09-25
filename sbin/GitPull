@@ -16,7 +16,7 @@ pull_repo () {
   done
 }
 
-if [ $USER == root ]
+if [ $USER = root ]
 then
   ZZ=/zz/*
   pull_repo
