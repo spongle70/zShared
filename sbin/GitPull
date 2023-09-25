@@ -16,9 +16,11 @@ pull_repo () {
   done
 }
 
-
-ZZ=/zz/*
-pull_repo
+if [ $USER == root ]
+then
+  ZZ=/zz/*
+  pull_repo
+fi
 
 #for i in `ls ${ZZ}`
 #do
