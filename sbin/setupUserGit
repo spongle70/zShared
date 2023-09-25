@@ -23,9 +23,9 @@ clone_repo () {
 
 MYNAME=`uname -n`
 
-if [ -f /zz/zPrivate/secrets/.${MYNAME}.private ]
+if [ -f /zz/zPrivate/secrets/.${MYNAME}.${USER}.private ]
 then
-    . /zz/zPrivate/secrets/.${MYNAME}.private
+    . /zz/zPrivate/secrets/.${MYNAME}.${USER}.private
 else
     GITUSER=YYYY
     DOMAIN=DOMAIN
