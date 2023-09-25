@@ -4,23 +4,38 @@ echo "SCRIPT $0 starting"
 
 MYNAME=`uname -n`
 
-ZZ=/zz
-REPO=
-KEYS=
+pull_repo () {
+  for i in `ls -d ${ZZ}`
+  do
+      echo $i
+      if [ -d $i/.git ]
+      then
+          echo $i
+          (cd $i; git pull; git checkout main; git pull )
+      fi
+  done
+}
 
-# if [ ! -d ${ZPC} ]
-# then
-#     mkdir ${ZPC}
-# fi
 
-for i in `ls ${ZZ}`
-do
-    echo $i
-    if [ -d ${ZZ}/$i ]
-    then
-        echo $i
-        (cd ${ZZ}/$i; git pull; git checkout main ; git pull ;)
-    fi
-done
+ZZ=/zz/*
+pull_repo
+
+#for i in `ls ${ZZ}`
+#do
+#    echo $i
+#    if [ -d ${ZZ}/$i/.git ]
+#    then
+#        echo $i
+#        (cd ${ZZ}/$i; git pull; git checkout main; git pull )
+#    fi
+#done
+
+ZZ=~/git/private/z*
+pull_repo
+
+
+
+ZZ=~/git/public/z*
+pull_repo
 
 exit 0
