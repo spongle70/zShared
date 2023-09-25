@@ -20,24 +20,12 @@ if [ $USER = root ]
 then
   ZZ=/zz/*
   pull_repo
+else
+  ZZ=~/git/private/z*
+  pull_repo
+
+  ZZ=~/git/public/z*
+  pull_repo
 fi
-
-#for i in `ls ${ZZ}`
-#do
-#    echo $i
-#    if [ -d ${ZZ}/$i/.git ]
-#    then
-#        echo $i
-#        (cd ${ZZ}/$i; git pull; git checkout main; git pull )
-#    fi
-#done
-
-ZZ=~/git/private/z*
-pull_repo
-
-
-
-ZZ=~/git/public/z*
-pull_repo
 
 exit 0
