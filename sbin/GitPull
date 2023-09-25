@@ -7,10 +7,10 @@ MYNAME=`uname -n`
 pull_repo () {
   for i in `ls -d ${ZZ}`
   do
-      echo $i
+      echo "checking $i"
       if [ -d $i/.git ]
       then
-          echo $i
+          echo "pulling $i"
           (cd $i; git pull; git checkout main; git pull )
       fi
   done
