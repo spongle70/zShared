@@ -229,6 +229,7 @@ _bashrc() {
       fi
   fi
 }
+
 _setpath
 _setldpath
 _setldrunpath
@@ -265,3 +266,17 @@ export GPODDER_DOWNLOAD_DIR=~/DocumentsPodcasts/downloads
 PATH=${PATH}:.local/bin ; export PATH
 export SIGNAL_PHONE_NUMBER=
 
+
+if [ -f /zz/zPrivate/secrets/bashrc ]
+then
+    source /zz/zPrivate/secrets/bashrc
+else
+    if [ -f /zz/Syno/secrets/bashrc ]
+    then
+        source /zz/Syno/secrets/bashrc
+    else
+        if [ -f ~/.bashrc ]; then
+            source ~/.bashrc
+        fi
+    fi
+fi
