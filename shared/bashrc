@@ -271,8 +271,8 @@ if [ -f /zz/zPrivate/secrets/bashrc ]
 then
     source /zz/zPrivate/secrets/bashrc
 else
-    if [ -f /zz/Syno/secrets/bashrc ]
+    if [ -f /zz/zSyno/secrets/bashrc ]
     then
-        source /zz/Syno/secrets/bashrc
+        source /zz/zSyno/secrets/bashrc
     fi
 fi
