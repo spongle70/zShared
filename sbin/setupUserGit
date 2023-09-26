@@ -27,14 +27,19 @@ if [ -f /zz/zPrivate/secrets/.${MYNAME}.${USER}.private ]
 then
     . /zz/zPrivate/secrets/.${MYNAME}.${USER}.private
 else
-    GITUSER=YYYY
-    DOMAIN=DOMAIN
-    PORT=PORT
-    PRIVATE_KEYS=~/YYY/qwer.pub
-    PRIVATE_REPO="x  y  x"
-    PUBLIC_REPO="x y z"
+    if [ -f /zz/zSyno/secrets/.${MYNAME}.${USER}.private ]
+    then
+        . /zz/zSyno/secrets/.${MYNAME}.${USER}.private
+    else
+        GITUSER=YYYY
+        DOMAIN=DOMAIN
+        PORT=PORT
+        PRIVATE_KEYS=~/YYY/qwer.pub
+        PRIVATE_REPO="x  y  x"
+        PUBLIC_REPO="x y z"
 
-    PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
+        PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
+    fi
 fi
 
 
