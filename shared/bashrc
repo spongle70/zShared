@@ -1,5 +1,6 @@
 # Source .bashrc for non-interactive Bash shells
 export BASH_ENV=~/.bashrc
+echo "shared"
 
 
 if [[ $- != *i* ]] ; then
@@ -211,8 +212,6 @@ _manpagecolor() {
 _setpath
 _setldpath
 _setldrunpath
-_setaliases
-_setlocalaliases
 _setprompt 2line
 _sethistory
 _manpagecolor
