@@ -209,6 +209,26 @@ _manpagecolor() {
   export LESS_TERMCAP_us=$'\E[01;32m'
 }
 
+_bashrc() {
+  if [ -f /zz/zShared/shared/bashrc ]
+  then
+      source /zz/zShared/shared/bashrc
+  fi
+
+  if [ -f /zz/zPrivate/secrets/bashrc ]
+  then
+      source /zz/zPrivate/secrets/bashrc
+  else
+      if [ -f /zz/Syno/secrets/bashrc ]
+      then
+          source /zz/Syno/secrets/bashrc
+      else
+          if [ -f ~/.bashrc ]; then
+              source ~/.bashrc
+          fi
+      fi
+  fi
+}
 _setpath
 _setldpath
 _setldrunpath
