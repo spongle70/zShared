@@ -154,36 +154,6 @@ _sethistory() {
   shopt -s cmdhist
 }
 
-_sources() {
-  local sources=(
-      ${HOME}/.nvm/nvm.sh
-      /etc/bash_completion
-      ${HOME}/.sources
-      ${HOME}/.sources/${HOSTNAME}
-      ${HOME}/.sources/${THISOS}
-      ${HOME}/.bash_completion.d
-      ${HOME}/.rvm/scripts/rvm
-  )
-
-  local i
-  for i in ${sources[@]}; do
-    # Source files
-    if [ -f $i ]; then
-      source $i
-      continue
-    fi
-
-    # Source all files in a directory
-    if [ -d $i ]; then
-      for j in $i/*; do
-        if [ -f $j ]; then
-          source $j
-        fi
-      done
-    fi
-  done
-}
-
 _manpagecolor() {
   export LESS_TERMCAP_mb=$'\E[01;31m'
   export LESS_TERMCAP_md=$'\E[01;31m'
@@ -194,26 +164,6 @@ _manpagecolor() {
   export LESS_TERMCAP_us=$'\E[01;32m'
 }
 
-_bashrc() {
-  if [ -f /zz/zShared/shared/bashrc ]
-  then
-      source /zz/zShared/shared/bashrc
-  fi
-
-  if [ -f /zz/zPrivate/secrets/bashrc ]
-  then
-      source /zz/zPrivate/secrets/bashrc
-  else
-      if [ -f /zz/Syno/secrets/bashrc ]
-      then
-          source /zz/Syno/secrets/bashrc
-      else
-          if [ -f ~/.bashrc ]; then
-              source ~/.bashrc
-          fi
-      fi
-  fi
-}
 
 _setpath
 _setldpath
@@ -232,17 +182,8 @@ shopt -s checkwinsize
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-#export TERM=ansi
 export TERM=xterm-256color
-#export PIP_REQUIRE_VIRTUALENV=true
-
 export GOPATH=${HOME}/dev/go
-
-_sources
-# Mac likes to discard ctl-o
-if [[ $THISOS == darwin ]]; then
-  stty discard undef
-fi
 
 export ANSIBLE_STDOUT_CALLBACK=yaml
 export GPODDER_HOME=~/DocumentsPodcasts/config
@@ -251,13 +192,3 @@ export GPODDER_DOWNLOAD_DIR=~/DocumentsPodcasts/downloads
 PATH=${PATH}:.local/bin ; export PATH
 export SIGNAL_PHONE_NUMBER=
 
-
-# if [ -f /zz/zPrivate/secrets/bashrc ]
-# then
-#     source /zz/zPrivate/secrets/bashrc
-# else
-#     if [ -f /zz/zSyno/secrets/bashrc ]
-#     then
-#         source /zz/zSyno/secrets/bashrc
-#     fi
-# fi
