@@ -3,10 +3,10 @@ export BASH_ENV=~/.bashrc
 echo "shared"
 
 
-if [[ $- != *i* ]] ; then
-  # Shell is non-interactive.  Be done now!
-  return
-fi
+# if [[ $- != *i* ]] ; then
+#   # Shell is non-interactive.  Be done now!
+#   return
+# fi
 
 THISOS=$(uname | awk '{print tolower($1)}')
 THISHOST=$(uname -n)
