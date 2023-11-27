@@ -16,16 +16,16 @@ pull_repo () {
   done
 }
 
-if [ $USER = root ]
-then
+# if [ $USER = root ]
+# then
   ZZ=/zz/*
   pull_repo
-else
+# else
   ZZ=~/git/private/z*
   pull_repo
 
   ZZ=~/git/public/z*
   pull_repo
-fi
+# fi
 
 exit 0
