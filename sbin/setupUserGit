@@ -22,23 +22,34 @@ clone_repo () {
 }
 
 MYNAME=`uname -n`
-
+DELETE_ONETIME=0
 if [ -f /zz/zPrivate/secrets/.${MYNAME}.${USER}.private ]
 then
     . /zz/zPrivate/secrets/.${MYNAME}.${USER}.private
+    DELETE_ONETIME=1
 else
     if [ -f /zz/zSyno/secrets/.${MYNAME}.${USER}.private ]
     then
         . /zz/zSyno/secrets/.${MYNAME}.${USER}.private
+        DELETE_ONETIME=1
     else
-        GITUSER=YYYY
-        DOMAIN=DOMAIN
-        PORT=PORT
-        PRIVATE_KEYS=~/YYY/qwer.pub
-        PRIVATE_REPO="x  y  x"
-        PUBLIC_REPO="x y z"
+        if [ ! -f /root/root.private ]
+        then
+            echo GITUSER=YYYY > /root/root.private
+            DOMAIN=DOMAIN >> /root/root.private
+            PORT=PORT >> /root/root.private
+            PRIVATE_KEYS=~/YYY/qwer.pub >> /root/root.private
+            PRIVATE_REPO="x  y  x" >> /root/root.private
+            PUBLIC_REPO="x y z" >> /root/root.private
 
-        PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}
+            PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER} >> /root/root.private
+
+            " Created onetime file in /root"
+            " It will be deleted after next use"
+        else
+            . /root/root.private
+            DELETE_ONETIME=1
+        fi
     fi
 fi
 
@@ -78,5 +89,9 @@ else
 fi
 clone_repo
 
+if [ DELETE_ONETIME ==1 ]
+then
+    rm -f /root/root.private
+fi
 
 exit 0
