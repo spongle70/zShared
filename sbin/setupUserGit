@@ -90,7 +90,7 @@ else
 fi
 clone_repo
 
-if [ DELETE_ONETIME ==1 ]
+if [ ${DELETE_ONETIME} == 1 ]
 then
     rm -f /root/root.private
 fi
