@@ -35,14 +35,14 @@ else
     else
         if [ ! -f /root/root.private ]
         then
-            echo GITUSER=YYYY > /root/root.private
-            DOMAIN=DOMAIN >> /root/root.private
-            PORT=PORT >> /root/root.private
-            PRIVATE_KEYS=~/YYY/qwer.pub >> /root/root.private
-            PRIVATE_REPO="x  y  x" >> /root/root.private
-            PUBLIC_REPO="x y z" >> /root/root.private
+            echo "GITUSER=YYYY" > /root/root.private
+            echo "DOMAIN=DOMAIN" >> /root/root.private
+            echo "PORT=PORT" >> /root/root.private
+            echo "PRIVATE_KEYS=~/YYY/qwer.pub" >> /root/root.private
+            echo "PRIVATE_REPO="x  y  x"" >> /root/root.private
+            echo "PUBLIC_REPO="x y z"" >> /root/root.private
 
-            PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER} >> /root/root.private
+            echo "PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER}" >> /root/root.private
 
             echo " Created onetime file in /root"
             echo " It will be deleted after next use"
