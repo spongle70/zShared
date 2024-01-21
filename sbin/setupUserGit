@@ -95,4 +95,11 @@ then
     rm -f /root/root.private
 fi
 
+if [ $USER != "root" ]
+then
+    echo "not updating crontab"
+else
+	crontab -u root /zz/zPrivate/crontabs/DEBcrontab
+fi
+
 exit 0
