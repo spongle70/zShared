@@ -44,8 +44,9 @@ else
 
             PRIVATE_SITE=ssh://git@${DOMAIN}:${PORT}/${GITUSER} >> /root/root.private
 
-            " Created onetime file in /root"
-            " It will be deleted after next use"
+            echo " Created onetime file in /root"
+            echo " It will be deleted after next use"
+            exit 1
         else
             . /root/root.private
             DELETE_ONETIME=1
