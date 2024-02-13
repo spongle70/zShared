@@ -1,0 +1,89 @@
+#!/bin/sh
+#
+echo "SCRIPT $0 starting"
+
+clone_repo () {
+    if [ ! -d ${DIR} ]
+    then
+        mkdir -p ${DIR}
+    fi
+
+    for i in ${REPO}
+    do
+        echo $i
+        if [ ! -d ${DIR}/$i ]
+        then
+            echo $i
+            cd ${DIR}
+            git clone ${REPOSITE}/${i}.git
+    #        GIT_SSH_COMMAND="ssh -o 'StrictHostKeyChecking no' -i ${KEYS}" git clone ${REPOSITE}/${i}.git
+        fi
+    done
+}
+
+####################
+MYNAME=`uname -n`
+DELETE_ONETIME=0
+
+# set base directories
+if [ $USER != "root" ]
+then
+    ZZ=~/git
+    if [ ! -d ${ZZ} ]
+    then
+        mkdir -p ${ZZ}/private
+        mkdir -p ${ZZ}/public
+    fi
+else
+    ZZ=/zz
+fi
+
+# check for first use
+if [ -f /root/root.private ]
+then
+    echo "Sourcing one use file /root/root.private"
+    . /root/root.private
+    DELETE_ONETIME=1
+else
+    echo "Create a one use file /root/root.private or manually pull repos."
+    echo "One use fille will be deleted after next use."
+    exit 1
+fi
+
+# start cloning repos
+REPOSITE=${PRIVATE_SITE}
+KEYS=${PRIVATE_KEYS}
+
+REPO=${PRIVATE_REPO}
+if [ $USER != "root" ]
+then
+    DIR=${ZZ}/private
+else
+    DIR=${ZZ}
+fi
+clone_repo
+
+REPO=${PUBLIC_REPO}
+if [ $USER != "root" ]
+then
+    DIR=${ZZ}/public
+else
+    DIR=${ZZ}
+fi
+clone_repo
+
+if [ ${DELETE_ONETIME} = 1 ]
+then
+    # rm -f /root/root.private
+    echo "Deleting /root/root.private"
+fi
+
+if [ $USER != "root" ]
+then
+    echo "not updating crontab"
+else
+	crontab -u root /zz/zPrivate/crontabs/DEBcrontab
+fi
+
+exit 0
+
