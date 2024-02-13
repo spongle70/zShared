@@ -74,7 +74,7 @@ clone_repo
 
 if [ ${DELETE_ONETIME} = 1 ]
 then
-    # rm -f /root/root.private
+    rm -f /root/root.private
     echo "Deleting /root/root.private"
 fi
 
