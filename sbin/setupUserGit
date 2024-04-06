@@ -63,10 +63,24 @@ then
     then
         mkdir -p ${ZZ}/private
         mkdir -p ${ZZ}/public
+        mkdir -p ${ZZ}/docker
     fi
 else
     ZZ=/zz
 fi
+
+REPOSITE=${DOCKER_SITE}
+KEYS=${DOCKER_KEYS}
+
+REPO=${DOCKER_REPO}
+if [ $USER != "root" ]
+then
+    DIR=${ZZ}/docker
+else
+    DIR=${ZZ}
+fi
+clone_repo
+
 
 
 REPOSITE=${PRIVATE_SITE}
